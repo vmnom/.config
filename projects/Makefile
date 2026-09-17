@@ -1,0 +1,2 @@
+libraries:
+	gcc --version
