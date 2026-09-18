@@ -1,3 +1,6 @@
+vim.cmd("set number");
+vim.cmd("set nowrap");
+
 require("plugins.lazy")
 
 require("lazy").setup({

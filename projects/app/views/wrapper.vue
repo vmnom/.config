@@ -6,7 +6,7 @@
 	</head>
 
 	<body>
-		@content
+		error["guest.loginx", not found, ];
 	</body>
 
 </html>
