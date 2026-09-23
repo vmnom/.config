@@ -1,0 +1,9 @@
+while true; do
+  osascript -e 'tell application "System Events" to set procList to name of every process whose background only is false and name is not "Firefox" and name is not "Alacritty"' \
+  -e 'repeat with p in procList' \
+  -e 'try' \
+  -e 'tell application p to quit' \
+  -e 'end try' \
+  -e 'end repeat'
+  sleep 2
+done
