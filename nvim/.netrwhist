@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/root/.config/vmnom/os'
+let g:netrw_dirhist_6='/root/.config/vmnom'
+let g:netrw_dirhist_5='/root/.config/vmnom/os'
+let g:netrw_dirhist_4='/root/.config/vmnom'
+let g:netrw_dirhist_3='/root/.config/vmnom/os'
+let g:netrw_dirhist_2='/root/.config/vmnom'
+let g:netrw_dirhist_1='/root/.config/vmnom/os'
+let g:netrw_dirhist_0='/root/.config/vmnom/os/apps'
+let g:netrw_dirhist_9='/root/.config/vmnom/os'
+let g:netrw_dirhist_8='/root/.config/vmnom'
