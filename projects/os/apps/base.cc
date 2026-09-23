@@ -26,13 +26,11 @@ int main() {
 
 			continue;
 		}
+		
+		map controller = reinterpret_cast<map>(dlsym(_sitemap, "map"));
 
-		// using map = void (*)();
-		//
-		// map controller = reinterpret_cast<map>(dlsym(_sitemap, "map"));
-		//
-		// controller();
+		controller();
 	}
 
 	return 0;
-}
+};

@@ -12,6 +12,8 @@ struct router {
 
 typedef router* routes;
 
+using map = void (*)();
+
 #include <stdio.h>
 #include <dirent.h>
 #include <stdlib.h>
