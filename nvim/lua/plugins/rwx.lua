@@ -1,19 +1,6 @@
 return {
 
-	{
-
-		"preservim/nerdtree",
-
-		config = function()
-
-			vim.g.NERDTreeStatusline = ""
-
-			vim.g.NERDTreeMinimalUI = 1
-
-			vim.keymap.set("n", "<C-e>", ":NERDTreeToggle<CR>", { silent = true })
-
-		end
-	},
+	"preservim/nerdtree",
 
 	"ellisonleao/gruvbox.nvim",
 
@@ -25,6 +12,12 @@ return {
 		config = function()
 
 			vim.cmd.colorscheme("gruvbox")
+
+			vim.g.NERDTreeMinimalUI = 1
+
+			vim.g.NERDTreeStatusline = ""
+
+			vim.keymap.set("n", "<C-e>", ":NERDTreeToggle<CR>", { silent = true })
 
 			require("nvim-treesitter.configs").setup({
 
@@ -40,6 +33,7 @@ return {
 			})
 
 			vim.opt.wrap   = false
+
 			vim.opt.number = true
 
 			vim.api.nvim_set_hl(0, "String", { fg = "#83c092", bold = true })
@@ -52,6 +46,8 @@ return {
 			vim.api.nvim_set_hl(0, "@keyword.modifier", { fg = "#dbbc7f", bold = true })
 			vim.api.nvim_set_hl(0, "@function", { fg = "#e278ee", bold = true })
 			vim.api.nvim_set_hl(0, "@function", { fg = "#e278ee", bold = true })
+
 		end,
+
 	},
 }

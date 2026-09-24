@@ -1,21 +1,24 @@
 #ifndef BASE_H
 #define BASE_H
 
-struct controller {
-	int value;
-};
-
-using service = void (*)(controller*);
-
-
+#include <vector>
 #include <dlfcn.h>
 #include <iostream>
 #include <filesystem>
-#include <stdio.h>
-#include <dirent.h>
-#include <stdlib.h>
-#include <iostream>
 
-namespace fs = std::filesystem;
+using namespace std;
+
+typedef struct router router;
+
+typedef struct controller controller;
+
+struct controller {
+	vector<router> routes;
+};
+
+struct router {
+	string unique;
+	controller method;
+};
 
 #endif

@@ -1,33 +1,14 @@
 #include <rwx.h>
 
-std::string homePath;
-
 int main() {
 
-	dlerror();
+	controller ctrl {};
 
-	const char *home = std::getenv("HOME");
+	filesystem::path config_dir(getenv("HOME"));
 
-	if (home) {
+	config_dir /= ".config/vmnom/public/vendor";
 
-		homePath = std::string(home) + "/.config/vmnom/public";
-
-	}
-
-	else
-
-		return EXIT_FAILURE;
-
-	std::string vendor = std::string(homePath) + "/vendor";
-
-	/*
-	 * Global static controller instance.
-	 * Created once and shared throughout the program.
-	 */
-
-	static controller base{};
-
-	for (const auto& entry : fs::directory_iterator(vendor)) {
+	for (const auto& entry : filesystem::directory_iterator(config_dir)) {
 
 		if (!entry.is_regular_file())
 
@@ -42,13 +23,20 @@ int main() {
 			continue;
 		}
 
-		service map = reinterpret_cast<service>(dlsym(file, "map"));
+		using service = void (*) (controller*);
 
-		map(&base);
-	}
+		service srv = reinterpret_cast<service>(dlsym(file, "service"));
 
+		if (!srv) {
 
-	return 0;
+			std::cerr << "Failed to find 'service' symbol: " << dlerror() << "\n";
+
+			return EXIT_FAILURE;
+		}
+
+		srv(&ctrl);
+
+	};
+
+	return EXIT_SUCCESS;
 };
-
-

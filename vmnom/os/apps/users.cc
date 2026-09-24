@@ -1,8 +1,8 @@
 #include <rwx.h>
 
-void map(controller* base) {
+extern "C" void service (controller* ctrl) {
 
-	std::cout << "users controller";
-
-
+	auto index = [] () {
+		std::cout << "hello world";
+	};
 }
