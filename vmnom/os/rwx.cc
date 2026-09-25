@@ -2,7 +2,8 @@
 
 int main() {
 
-	controller ctrl {};
+	kernel ctrl {
+	};
 
 	filesystem::path config_dir(getenv("HOME"));
 
@@ -23,7 +24,7 @@ int main() {
 			continue;
 		}
 
-		using service = void (*) (controller*);
+		using servive = void (*) (kernel*);
 
 		service srv = reinterpret_cast<service>(dlsym(file, "service"));
 

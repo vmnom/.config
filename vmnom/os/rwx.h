@@ -10,15 +10,14 @@ using namespace std;
 
 typedef struct router router;
 
-typedef struct controller controller;
-
-struct controller {
-	vector<router> routes;
-};
-
 struct router {
 	string unique;
-	controller method;
+};
+
+typedef struct service service;
+
+struct service {
+	vector<router> routes;
 };
 
 #endif
