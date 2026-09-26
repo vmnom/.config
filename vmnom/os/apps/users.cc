@@ -1,28 +1,11 @@
 #include <rwx.h>
 
-extern "C" void service (kernel* ctrl) {
+extern "C" void nmap (service* ctrl) {
 
-	/*
+	/** router used by this.
 	 *
-	 *
+	 * automaticly creates database if not exists;
 	 */
+	vector<router>* routes = ctrl->resolve("vmnom.com");
 
-	router routes = ctrl.group("vmnom.com")->router(sdl{
-
-			.redirect = ()
-	});
-
-	auto onClick = [] (request req) JSON {
-
-	}
-
-	browser(https:://::/users/create)
-
-	routes->get("users/create", index, view{"login"});
-
-	fetch()
-
-	routes->post("users/create", login, view{"dashboard"});
 };
-
-

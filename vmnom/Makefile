@@ -12,3 +12,4 @@ auto:
 	@echo
 	@$(CXX) $(CFLAGS) -Ios os/rwx.cc -o public/vmnom
 	public/vmnom
+	@echo
