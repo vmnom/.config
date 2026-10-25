@@ -22,7 +22,7 @@ struct display {
 
 	string buf;
 
-	void clear() {
+	void plc() {
 
 		cout << "\033[2J\033[H" << flush;
 
@@ -37,9 +37,7 @@ struct display {
 
 struct network : display {
 
-	int fd;
-
-	int cnt;
+	int kernel;
 
 	vector<connection> connections;
 
@@ -148,25 +146,7 @@ struct network : display {
 
 struct playground : network {
 
-	vector<int, nosql*> w;
-
-	void (*workers) (vector<int, nosql*>*);
-
-	playground& l() {
-
-		workers(&w);
-
-		while(1) {
-
-			emplace(mail(), clock());
-			
-		}
-
-		return *this;
-
-	}
-
-	playground& plugp(int port) {
+	playground& enable(int port) {
 
 		publish(port);
 
@@ -178,11 +158,11 @@ struct playground : network {
 
 	playground& verify() {
 
-		console("https://vmnom.com");
+		scale("https://vmnom.com");
 
 		socklen_t len = sizeof(addr);
 
-		if (getsockname(fd, reinterpret_cast<sockaddr*>(&addr), &len) != -1) {
+		if (getsockname(kernel, reinterpret_cast<sockaddr*>(&addr), &len) != -1) {
 
 			console("0.0.0.0:" + to_string(ntohs(addr.sin_port)));
 
@@ -197,6 +177,9 @@ struct playground : network {
 
 	}
 
+	vector<int, nosql*> w;
+
+	void (*workers) (vector<int, nosql*>*);
 };
 
 #endif

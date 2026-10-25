@@ -11,6 +11,8 @@ function! _()
 
 	set cursorline
 
+	set shortmess+=T
+
 	set relativenumber
 
 	set tabstop&
@@ -55,7 +57,6 @@ function! _()
 
 		autocmd FileType cpp syntax keyword Host nosql
 
-
 		autocmd FileType cpp syntax keyword Group sockaddr_in
 
 		autocmd FileType cpp syntax keyword Group socklen_t
@@ -74,54 +75,38 @@ function! _()
 	augroup END
 
 	"
-	" default
+	" primary
 
-	hi Normal ctermfg=8 ctermbg=233 cterm=none
+	hi Type ctermfg=189
+	
+	hi Statement ctermfg=132
 
-	hi Comment ctermfg=239 cterm=none
+	hi Identifier ctermfg=60 cterm=bold
 
-	"
-	" apply
+	hi Normal ctermfg=248
+	hi Comment ctermfg=8
+	hi cUserFunction ctermfg=32
 
-	hi Type ctermfg=8 cterm=none
-
-	hi cUserFunction ctermfg=220 cterm=none
-
-	hi Statement ctermfg=9
+	hi link Host Identifier
 
 	hi link Group Type
 	hi link Struct Type
 	hi link cRepeat Type
 	hi link cStatement Type
+	hi link NERDTreeFile Type 
 
-	"
-	" primary
-
-	hi Constant ctermfg=60
-
-	hi link Host Constant
-
-	"
-	" others
+	hi link CursorLineNr Type
 
 	hi Directory ctermfg=8 cterm=bold
 
-	hi link NERDTreeFile Type 
-
-	hi LineNr ctermfg=8
+	"
+	" others
 
 	hi PreProc ctermfg=8
 
 	hi Special ctermfg=8
 
-	hi Identifier ctermfg=190
-
-	"
-	" optional
-
 	hi CursorLine ctermbg=234
-
-	hi CursorLineNr ctermbg=236 ctermfg=9
 
 	hi NERDTreeDirSlash ctermfg=188
 

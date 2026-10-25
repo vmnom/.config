@@ -4,7 +4,6 @@ int main(int argc, char* argv[]) {
 
 	/*
 	 * define
-	 *
 	 */
 
 	playground rwx;
@@ -14,27 +13,27 @@ int main(int argc, char* argv[]) {
 	 *
 	 */
 
-	rwx.routes = [] (router* routes) {
+	rwx.host = [] (router* routes) {
 
-		// some routes
+		nosql vmnom = routes->group("vmnom");
 
 	};
 
 	/*
-	 * console tty
+	 * vmnom, llc
 	 *
 	 */
 
-	auto terminal = [] (playground* rwx) {
+	auto c = [] (playground* rwx) {
 
-		rwx->clear();
+		rwx->cls();
 
-		rwx->console("vmnom.1.0.0-nosql");
+		rwx->enable(HTTP);
 
-		rwx->plug(HTTP);
+		rwx->console("vmnom.1.0.0-nosql$ ");
 
 	};
 
-	return	terminal(&rwx);
+	return	c(&rwx);
 
 };
