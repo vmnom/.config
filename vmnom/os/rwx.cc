@@ -1,36 +1,27 @@
-#include <rwx.h>
+#include <nosql.h>
 
 int main(int argc, char* argv[]) {
 
-	/*
-	 * definitions.
-	 *
-	 */
+	string json = R"({
+	  "kind": "FunctionDecl",
+	  "name": "add",
+	  "inner": [
+	    {
+	      "kind": "ParmVarDecl",
+	      "name": "a"
+	    },
+	    {
+	      "kind": "ParmVarDecl",
+	      "name": { "id": { "xyz": "nice" } }
+	    }
+	  ]
+	})";
 
-	playground rwx;
+	nosql rwx = {json};
 
-	/*
-	 * implementations.
-	 *
-	 */
+	rwx.xsstest();
 
-	auto register = [] (playground* rwx) {
-
-		rwx->cls();
-
-		rwx->enable(HTTP);
-
-		rwx->console("vmnom.1.0.0-nosql$ ");
-
-	};
-
-	/*
-	 * routes list.
-	 *
-	 */
-
-	rwx.host["default"] = [] (router* routes) {};
-
-	return	register(&rwx);
+	return	EXIT_FAILURE;
 
 };
+
