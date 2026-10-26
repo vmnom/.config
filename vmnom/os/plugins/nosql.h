@@ -1,26 +1,68 @@
 #include <plugins.h>
 
-struct utils {
+struct Q {
 
-	string buffer;
+	const char *create_trigger_sql =
+		"CREATE TRIGGER IF NOT EXISTS leads"
+		"AFTER INSERT ON json_data"
+		"WHEN NEW.created_at IS NULL"
+		"BEGIN"
+		"	UPDATE json_data"
+		"	SET created_at = datetime('now')"
+		"	WHERE id = NEW.id;"
+		"END;";
+
+	const char *create_table_sql =
+		"CREATE TABLE IF NOT EXISTS leads ("
+		"id TEXT PRIMARY KEY,"
+		"json TEXT NOT NULL CHECK(json_valid(data)),"
+		"registred BOOLEAN NOT NULL DEFAULT 0,"
+		"created_at TEXT"
+		");";
+
+	const char *item =
+		"INSERT INTO json_data (id, registred, data)"
+		"VALUES (?1, ?2);";
+
+	const char *drop = "DELETE FROM leads WHERE registred = 0;";
 
 };
 
-struct database : utils {
+struct database : Q {
 
-	void xsstest() {
+	using Error = string;
 
-		load();
+	sqlite3 *db = nullptr;
 
-		verify();
+	sqlite3_stmt *stmt = nullptr;
 
+	void hold(string json) {
+
+		int rc = sqlite3_prepare_v2(db, item, -1, &stmt, NULL);
+
+		if (rc == SQLITE_OK) {
+
+			sqlite3_bind_text(stmt, 1, "func_add", -1, SQLITE_STATIC);
+
+			sqlite3_bind_int(stmt, 2, 0);
+
+			sqlite3_bind_text(
+					stmt, 3,
+					json.c_str(),
+					static_cast<int>(json.size()),
+					SQLITE_TRANSIENT
+					);
+
+			int rc = sqlite3_step(stmt);
+
+			if (rc != SQLITE_DONE)
+				fprintf(stderr, "Insert error: %s\n", sqlite3_errmsg(db));
+
+			sqlite3_finalize(stmt);
+		}
 	}
 
-	sqlite3 *db = NULL;
-
-	sqlite3_stmt *stmt = NULL;
-
-	void load() {
+	void open() {
 
 		if (sqlite3_open("rwx/private/cpu", &db) != SQLITE_OK) {
 			fprintf(stderr, "Open error: %s\n", sqlite3_errmsg(db));
@@ -29,19 +71,7 @@ struct database : utils {
 
 	}
 
-	void verify() {
-
-		const char *sql =
-			"CREATE TABLE IF NOT EXISTS leads ("
-			"id TEXT PRIMARY KEY,"
-			"data TEXT NOT NULL CHECK(json_valid(data))"
-			");";
-
-		cout << query(sql) << endl;
-
-	}
-
-	string query(const char *sql) {
+	Error query(const char *sql) {
 
 		char *err = NULL;
 
@@ -52,14 +82,53 @@ struct database : utils {
 			return "OK";
 		}
 
-		printf("Error message: %s\n", err ? err : "Unknown error");
+		string error(err);
 
-		string error_str(err);
+		return "ERROR: " + error;
 
-		return "ERROR: " + error_str;
+	}
+
+	void elect() {
+
+		open();
+
+		query(create_table_sql);
+
+		query(create_trigger_sql);
+
+	}
+
+	void every(int ms) {
+
+		while(1) {
+
+			query(drop);
+
+			Sleep(ms);
+
+		}
 	}
 
 };
 
-struct nosql : database {};
+struct nosql : database {
 
+	void connected(string json) {
+
+		findOrCreate(json);
+
+	}
+
+}
+
+struct playground : nosql {
+
+	void verify() {
+
+		elect();
+
+		cout << "database ready." << endl;
+
+	}
+
+};

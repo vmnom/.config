@@ -13,6 +13,7 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <windows.h>
 #include <sqlite3.h>
 
 struct nosql;

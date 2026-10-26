@@ -17,9 +17,11 @@ int main(int argc, char* argv[]) {
 	  ]
 	})";
 
-	nosql rwx = {json};
+	nosql rwx;
 
-	rwx.xsstest();
+	rwx.verify();
+
+	rwx.connected(json);
 
 	return	EXIT_FAILURE;
 
