@@ -1,20 +1,14 @@
 function! _()
 
-	source ~/.config/vim/functions/Plug.vim
+	let g:NERDTreeDirSlash = ''
 
+	source ~/.config/vim/functions/Plug.vim
 	source ~/.config/vim/functions/InspectHL.vim
 
-	"
-	" defaults
-
 	set nowrap
-
 	set cursorline
-
 	set shortmess+=T
-
 	set relativenumber
-
 	set tabstop&
 	set cindent&
 	set autoindent&
@@ -22,95 +16,9 @@ function! _()
 	set softtabstop&
 	set shiftwidth&
 	set expandtab&
-
 	set background=dark
-
-	"
-	" NerdTree
-	"
-
 	nnoremap <C-e> :NERDTreeToggle<CR>
-
-	"
-	" Syntax
-	"
-
-	syntax on
-
-	colorscheme quiet
-
-	augroup clang
-
-		autocmd!
-
-		autocmd FileType cpp syntax keyword Host connection
-
-		autocmd FileType cpp syntax keyword Host playground
-
-		autocmd FileType cpp syntax keyword Host display
-
-		autocmd FileType cpp syntax keyword Host network
-
-		autocmd FileType cpp syntax keyword Host router
-
-		autocmd FileType cpp syntax keyword Host client 
-
-		autocmd FileType cpp syntax keyword Host nosql
-
-		autocmd FileType cpp syntax keyword Group sockaddr_in
-
-		autocmd FileType cpp syntax keyword Group socklen_t
-
-		autocmd FileType cpp syntax keyword Group vector
-
-		autocmd FileType cpp syntax keyword Group void
-
-		autocmd FileType cpp syntax keyword Group int
-
-
-		autocmd FileType cpp syntax keyword Struct struct
-
-		autocmd FileType cpp syntax keyword Constant HTTP
-
-	augroup END
-
-	"
-	" primary
-
-	hi Type ctermfg=189
-	
-	hi Statement ctermfg=132
-
-	hi Identifier ctermfg=60 cterm=none
-
-	hi Normal ctermfg=248
-	hi Comment ctermfg=8
-	hi cUserFunction ctermfg=32
-
-	hi link Host Identifier
-
-	hi link Group Type
-	hi link Struct Type
-	hi link cRepeat Type
-	hi link cStatement Type
-	hi link NERDTreeFile Type 
-
-	hi link CursorLineNr Type
-
-	hi Directory ctermfg=8 cterm=bold
-
-	"
-	" others
-
-	hi PreProc ctermfg=8
-
-	hi Special ctermfg=8
-
-	hi CursorLine ctermbg=234
-
-	hi NERDTreeDirSlash ctermfg=188
-
-	hi NERDTreeCursorLine guibg=Red guifg=NONE gui=NONE
+	colorscheme clang
 
 endfunction
 

@@ -62,3 +62,4 @@ struct database : utils {
 };
 
 struct nosql : database {};
+
