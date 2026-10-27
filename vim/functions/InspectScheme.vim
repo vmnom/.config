@@ -1,4 +1,4 @@
-function! InspectHL()
+function! InspectScheme()
 
 	let l:id = synID(line('.'), col('.'), 1)
 
@@ -15,4 +15,4 @@ function! InspectHL()
 
 endfunction
 
-command! InspectHL call InspectHL()
+command! InspectHL call InspectScheme()

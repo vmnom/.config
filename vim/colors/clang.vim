@@ -1,19 +1,38 @@
-highlight clear
-
-if exists("syntax_on")
-	    syntax reset
-endif
+hi clear
+hi Normal ctermfg=8 ctermbg=0 cterm=none
+hi StatusLine ctermfg=202 ctermbg=0 cterm=none
+hi StatusLineNC ctermfg=0 ctermbg=202 cterm=none,reverse
 
 let g:colors_name = "clang"
 
-hi CursorLineNr ctermfg=189 cterm=none
-hi CursorLine cterm=bold 
-hi Normal ctermfg=189 ctermbg=0 cterm=none
-hi Type ctermfg=241 cterm=none
-hi Identifier ctermfg=78 cterm=none
-hi LineNr ctermfg=8
-hi PreProc ctermfg=9
-hi Special ctermfg=202
-hi Constant ctermfg=11
-hi Statement ctermfg=9
-hi Directory ctermfg=gray cterm=none
+hi clear Todo
+hi clear Type
+hi Type ctermfg=60
+hi clear PreProc
+hi clear Constant
+hi link Constant Type
+hi clear LineNr
+hi link LineNr Normal
+hi clear Comment
+hi Comment ctermfg=190
+hi clear Special
+hi clear Identifier
+hi Identifier ctermfg=128
+hi clear Directory 
+hi link Directory Type
+hi clear EndOfBuffer
+hi link EndOfBuffer Normal
+hi clear NERDTreeDirSlash
+hi link NERDTreeDirSlash Normal
+hi clear VertSplit 
+hi link VertSplit Normal 
+hi clear CursorLine
+hi clear CursorLineNr
+hi clear Statement
+hi link Statement Identifier
+hi clear NERDTreeFile
+hi link NERDTreeFile Type
+hi clear Visual
+hi Visual ctermbg=236
+hi clear cUserFunction
+hi cUserFunction ctermfg=227

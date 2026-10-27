@@ -5,9 +5,7 @@
 
 struct playground : nosql {
 
-	void verify() {
-
-	}
+	void verify() {}
 
 };
 

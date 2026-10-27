@@ -18,7 +18,7 @@ struct Query {
 		"WHEN created IS NULL"
 		"BEGIN"
 		"	UPDATE leads"
-		/* "	SET created = datetime('now')" */
+		"	SET created = datetime('now')"
 		"	WHERE id = NEW.id;"
 		"END;";
 

@@ -1,9 +1,12 @@
 function! _()
 
-	let g:NERDTreeDirSlash = ''
+	" dotfiles
+
+	set tags=~/config/vmnom/tags;,tags
 
 	source ~/.config/vim/functions/Plug.vim
-	source ~/.config/vim/functions/InspectHL.vim
+
+	source ~/.config/vim/functions/InspectScheme.vim
 
 	set nowrap
 	set cursorline
@@ -17,7 +20,17 @@ function! _()
 	set shiftwidth&
 	set expandtab&
 	set background=dark
+
+	filetype plugin indent on
+
+	let g:NERDTreeWinSize = 28
+
+	" Toggle NERDTree with Ctrl+e
+
 	nnoremap <C-e> :NERDTreeToggle<CR>
+
+	set laststatus=0
+
 	colorscheme clang
 
 endfunction

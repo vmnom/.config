@@ -2,9 +2,9 @@ set runtimepath^=$HOME/.config/vim
 
 call plug#begin('~/.config/vim/plugged') 
 
-Plug 'vim/colorschemes'
+Plug 'preservim/nerdtree'
 
-Plug 'preservim/nerdtree' 
+Plug 'vim/colorschemes'
 
 Plug 'sheerun/vim-polyglot'
 

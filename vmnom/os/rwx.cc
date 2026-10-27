@@ -4,9 +4,16 @@ int main(int argc, char* argv[]) {
 
 	playground rwx;
 
-	rwx.up("rwx/private/cpu");
+	/* 
+	 * create hosts 
+	 *
+	 *-*/
 
-	rwx.verify();
+	rwx.hosts["default"] = [] (nosql id) {
 
-	return 0;
+	}
+
+	rwx.verify(80);
+
+	return EXIT_FAILURE;
 };

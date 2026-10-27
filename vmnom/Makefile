@@ -1,14 +1,15 @@
-man:
+bin:
 	clear
-	time g++ -std=gnu++98 -H -pipe -Ios -Ios/plugins os/rwx.cc -o rwx/bin -lsqlite3
-	rwx/bin
+	time c++ -std=c++17 -include-pch rwx/gch -H -O0 -pipe -Ios -Ios/plugins os/rwx.cc -o rwx/bin -lsqlite3
+	rwx/bin || true
+
 pch:
-	ctags -R .
-	g++ -std=gnu++98 -H -O0 -pipe -x c++-header -Ios/plugins os/rwx.h
+	time c++ -std=c++17 -H -O0 -pipe -x c++-header -Ios/plugins os/rwx.h -o rwx/gch
 	clear
-	make
+	time make || true
 
 git: 
 	git add ..
 	git commit -m "rwx"
-	git push --all
+	git push --all || true
+
