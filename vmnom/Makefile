@@ -13,3 +13,6 @@ git:
 	git commit -m "rwx"
 	git push --all || true
 
+debug:
+	@clear
+	@git ls-files "*.cc" "*.h"

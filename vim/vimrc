@@ -23,16 +23,16 @@ function! _()
 
 	filetype plugin indent on
 
-	let g:NERDTreeWinSize = 28
+	let g:NERDTreeWinSize = 38
 
 	" Toggle NERDTree with Ctrl+e
 
-	nnoremap <C-e> :NERDTreeToggle<CR>
-
-	set laststatus=0
+	nnoremap <C-e> :source ~/.config/vim/vimrc<CR>:NERDTreeToggle<CR>
 
 	colorscheme clang
 
 endfunction
 
 call _()
+
+

@@ -4,14 +4,6 @@ struct Query {
 
 	sqlite3_stmt *stmt = NULL;
 
-	const char *create_table_sql =
-		"CREATE TABLE IF NOT EXISTS leads ("
-		"id TEXT PRIMARY KEY,"
-		"data TEXT NOT NULL CHECK(json_valid(data)),"
-		"readonly BOOLEAN NOT NULL DEFAULT 0,"
-		"created TEXT"
-		");";
-
 	const char *create_trigger_sql =
 		"CREATE TRIGGER IF NOT EXISTS leads"
 		"AFTER INSERT ON leads"
@@ -22,7 +14,15 @@ struct Query {
 		"	WHERE id = NEW.id;"
 		"END;";
 
-	const char *item =
+	const char *create_table_sql =
+		"CREATE TABLE IF NOT EXISTS leads ("
+		"id TEXT PRIMARY KEY,"
+		"data TEXT NOT NULL CHECK(json_valid(data)),"
+		"readonly BOOLEAN NOT NULL DEFAULT 0,"
+		"created TEXT"
+		");";
+
+	const char *insert =
 		"INSERT INTO leads (data, creation)"
 		"VALUES (?1, ?2);";
 
@@ -34,7 +34,7 @@ struct database : Query {
 
 	string hold(string json) {
 
-		int rc = sqlite3_prepare_v2(db, item, -1, &stmt, NULL);
+		int rc = sqlite3_prepare_v2(db, insert, -1, &stmt, NULL);
 
 		if (rc == SQLITE_OK) {
 

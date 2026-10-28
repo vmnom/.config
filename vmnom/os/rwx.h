@@ -3,7 +3,17 @@
 
 #include <index.h>
 
+struct request {
+
+	int id;
+
+	string raw;
+
+};
+
 struct playground : nosql {
+
+	unordered_map<string, function<void(nosql*)>> prototype;
 
 	void verify() {}
 
