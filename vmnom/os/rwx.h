@@ -1,22 +1,8 @@
 #ifndef RWX_H
 #define RWX_H
 
-#include <index.h>
+#include "include/plugins/nosql.h"
 
-struct request {
-
-	int id;
-
-	string raw;
-
-};
-
-struct playground : nosql {
-
-	unordered_map<string, function<void(nosql*)>> prototype;
-
-	void verify() {}
-
-};
+struct playground : nosql {};
 
 #endif

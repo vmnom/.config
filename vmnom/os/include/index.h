@@ -2,11 +2,18 @@
 #include <string>
 #include <variant>
 #include <vector>
+#include <stdlib.h>
 #include <iostream>
 #include <sqlite3.h>
-#include <unordered_map>
-#include <functional>
 
 using namespace std;
 
-#include <nosql.h>
+struct console {
+
+	void log(string line) {
+
+		cout << line << endl;
+
+	}
+
+};

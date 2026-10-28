@@ -1,2 +1,37 @@
-Mrwx.cc	./os/rwx.cc	/^int main(int argc, char* argv[]) {$/
-Query	./os/plugins/nosql.h	/^struct Query {$/
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/root/.config/vmnom/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	//
+RWX_H	os/rwx.h	/^#define RWX_H$/;"	d
+begin	os/include/plugins/nosql.h	/^	void begin(string file) {$/;"	f	struct:database	typeref:typename:void
+bin	Makefile	/^bin:$/;"	t
+console	os/include/index.h	/^struct console {$/;"	s
+create_connections_sql	os/include/plugins/nosql.h	/^	const char *create_connections_sql;$/;"	m	struct:q	typeref:typename:const char *
+create_trigger_sql	os/include/plugins/nosql.h	/^	const char *create_trigger_sql;$/;"	m	struct:q	typeref:typename:const char *
+database	os/include/plugins/nosql.h	/^struct database : q, console  {$/;"	s
+db	os/include/plugins/nosql.h	/^	sqlite3 *db = NULL;$/;"	m	struct:q	typeref:typename:sqlite3 *
+drop	os/include/plugins/nosql.h	/^	const char *drop;$/;"	m	struct:database	typeref:typename:const char *
+get	os/include/plugins/nosql.h	/^	nosql get(string key) {$/;"	f	struct:prototype	typeref:typename:nosql
+git	Makefile	/^git: $/;"	t
+insert	os/include/plugins/nosql.h	/^	const char *insert;$/;"	m	struct:database	typeref:typename:const char *
+log	os/include/index.h	/^	void log(string line) {$/;"	f	struct:console	typeref:typename:void
+main	os/rwx.cc	/^int main(int argc, char* argv[]) {$/;"	f	typeref:typename:int
+nested	os/include/plugins/nosql.h	/^	vector<prototype> nested;$/;"	m	struct:nosql	typeref:typename:vector<prototype>
+nosql	os/include/plugins/nosql.h	/^struct nosql : database, prototype {$/;"	s
+pch	Makefile	/^pch:$/;"	t
+playground	os/rwx.h	/^struct playground : nosql {};$/;"	s
+prototype	os/include/plugins/nosql.h	/^struct prototype : map<string, nosql> {$/;"	s
+q	os/include/plugins/nosql.h	/^struct q {$/;"	s
+query	os/include/plugins/nosql.h	/^	void query(const char *sql) {$/;"	f	struct:database	typeref:typename:void
+select	os/include/plugins/nosql.h	/^	void select(string file) {$/;"	f	struct:database	typeref:typename:void
+set	os/include/plugins/nosql.h	/^	void set(string key, nosql value) {$/;"	f	struct:prototype	typeref:typename:void
+sql	os/include/plugins/nosql.h	/^	void sql(string file) {$/;"	f	struct:database	typeref:typename:void
+stmt	os/include/plugins/nosql.h	/^	sqlite3_stmt *stmt = NULL;$/;"	m	struct:q	typeref:typename:sqlite3_stmt *
+store	os/include/plugins/nosql.h	/^	string store(string json) {$/;"	f	struct:database	typeref:typename:string

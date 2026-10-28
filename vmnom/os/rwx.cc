@@ -1,3 +1,5 @@
+#include <index.h>
+
 #include <rwx.h>
 
 int main(int argc, char* argv[]) {
@@ -9,6 +11,8 @@ int main(int argc, char* argv[]) {
 	 *
 	 */
 
-	return EXIT_FAILURE;
+	rwx.sql("rwx/private/cpu");
+
+	return EXIT_SUCCESS;
 
 };
