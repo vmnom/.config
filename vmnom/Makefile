@@ -2,22 +2,24 @@ SHELL := /bin/zsh
 
 PCH := rwx/index.h.pch
 
-Compile := c++ -include-pch $(PCH) -std=c++98 -H -pipe -Ios os/rwx.cc -o rwx/bin -lsqlite3 -Winvalid-pch -Irwx
+Compile := c++ -include-pch $(PCH) -std=c++98 -Ios os/rwx.cc -o rwx/bin -lsqlite3 -H -pipe 
 
-CompilePCH := time c++ -std=c++98 -H -pipe -x c++-header os/include/index.h -o $(PCH) 
+CompilePCH := c++ -std=c++98 -pipe -x c++-header os/include/index.h -o $(PCH) 
 
 dev:
-	@$(SHELL) -c 'TIMEFMT=$$'"'"'\nplug\t%J...\nreal\t%E\ncput\t%U\nsystem\t%S'"'"'; time $(Compile)'
-	@echo
+	clear
+	@$(SHELL) -c 'TIMEFMT=$$'"'"'\nlang\t[\033[38;5;208m\"%J...\"\033[0m]\nreal\t%E\ncput\t%U\nsystem\t%S'"'"'; time $(Compile)'
 	rwx/bin
 	@echo
 
 pch:
+	clear
 	rm -rf rwx/index.h.*
-	@$(SHELL) -c 'TIMEFMT=$$'"'"'\nplug\t%J...\nreal\t%E\ncput\t%U\nsystem\t%S'"'"'; time $(CompilePCH)'
+	@$(SHELL) -c 'TIMEFMT=$$'"'"'\nlang\t[\033[38;5;208m\"%J...\"\033[0m]\nreal\t%E\ncput\t%U\nsystem\t%S'"'"'; time $(CompilePCH)'
 	@echo
 
 git: 
 	git add ..
 	git commit -m "rwx"
 	git push --all
+	@echo
