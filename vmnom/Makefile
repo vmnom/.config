@@ -1,10 +1,10 @@
-CFLAG   := -H -include-pch rwx/index.h.gch
+CFLAG   := -H 
 CLANG   := c++ -std=c++98
 VMNOM   := rwx/vmnomxyz
 SHELL   := $(shell echo $$SHELL)
 PCH     := rwx/index.h.gch
 cdev    := $(CFLAG) -include os/include/index.h -Ios -lsqlite3 os/rwx.cc -o $(VMNOM)
-cpch    := $(CFLAG) -x c++-header os/include/index.h -o $(PCH) 
+cpch    := $(CFLAG) -x c++-header os/include/index.h
 
 dev:
 	@echo
