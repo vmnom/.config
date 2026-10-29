@@ -15,7 +15,6 @@ pch:
 	@$(SHELL) -c 'TIMEFMT=$$'"'"'\n$(CLANG) $(cpch)\n\nreal\t%E\ncput\t%U\nsystem\t%S'"'"'; time $(CLANG) $(cpch)'
 	@echo
 dev:
-	@echo
 	@$(SHELL) -c 'TIMEFMT=$$'"'"'\n$(CLANG) $(cdev)\n\nreal\t%E\ncput\t%U\nsystem\t%S'"'"'; time $(CLANG) $(cdev)'
 	@echo
 	$(VMNOM)
