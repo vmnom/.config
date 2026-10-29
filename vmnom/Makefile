@@ -1,14 +1,13 @@
-PCH := rwx/index.h.gch
-VMNOM := rwx/vmnomxyz
-SHELL := $(shell echo $$SHELL)
-CC := clang++ -std=c++20
-
-compile_pch := -x c++-header os/include/index.h -o $(PCH) 
-compile_dev :=  -include-pch rwx/index.h.gch -lsqlite3 -Ios os/rwx.cc -o $(VMNOM)
+CLANG   = c++ -std=c++98
+VMNOM   = rwx/vmnomxyz
+SHELL   := $(shell echo $$SHELL)
+PCH     = rwx/index.h.gch
+cdev    =  -include-pch rwx/index.h.gch -lsqlite3 -Ios os/rwx.cc -o $(VMNOM)
+cpch    = -x c++-header os/include/index.h -o $(PCH) 
 
 dev:
 	@echo
-	@$(SHELL) -c 'TIMEFMT=$$'"'"'\nexec\t\033[38;5;208m$(CC) $(compile_dev)\033[0m\n\nreal\t%E\ncput\t%U\nsystem\t%S'"'"'; time $(CC) $(compile_dev)'
+	@$(SHELL) -c 'TIMEFMT=$$'"'"'\nexec\t\033[38;5;208m$(CLANG) $(cdev)\033[0m\n\nreal\t%E\ncput\t%U\nsystem\t%S'"'"'; time $(CLANG) $(cdev)'
 	@echo
 	$(VMNOM)
 	@echo
@@ -16,7 +15,7 @@ pch:
 	@echo
 	@echo "[!$(PCH)] compiling...."
 	@echo
-	@$(SHELL) -c 'TIMEFMT=$$'"'"'\nexec\t\033[38;5;208m$(CC) $(compile_pch)\033[0m\n\nreal\t%E\ncput\t%U\nsystem\t%S'"'"'; time $(CC) $(compile_pch)'
+	@$(SHELL) -c 'TIMEFMT=$$'"'"'\nexec\t\033[38;5;208m$(CLANG) $(cdev)\033[0m\n\nreal\t%E\ncput\t%U\nsystem\t%S'"'"'; time $(CLANG) $(cpch)'
 	@echo
 git: 
 	@echo "git add .."
