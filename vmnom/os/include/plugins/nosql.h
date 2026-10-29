@@ -4,6 +4,8 @@ struct nosql;
 struct database;
 struct prototype;
 
+typedef void (*signal) (nosql*, string);
+
 struct q {
 
 	string src;
@@ -52,6 +54,19 @@ struct database : q, console  {
 
 };
 
+struct validator {
+
+	vector<string> e;
+
+	bool fail() {
+		return e.empty();
+	}
+
+	void flush() {
+		e.clear();
+	}
+};
+
 struct prototype : map<string, nosql*> {
 
 	void set(string key, nosql* value) {
@@ -70,9 +85,14 @@ struct prototype : map<string, nosql*> {
 
 struct nosql : prototype, database {
 
-	string innerText;
+	void subscribe(map<string, signal> service) {
 
-	prototype prototype;
+		map<string, signal>::iterator it;
 
-	string (*serialize) (nosql*);
+		for (it = service.begin(); it != service.end(); ++it) {
+			it->second(this, it->first);
+		}
+
+	}
+
 };

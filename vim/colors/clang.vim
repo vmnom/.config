@@ -20,9 +20,8 @@ hi clear Comment
 hi Comment ctermfg=239
 hi clear Special
 hi clear cppSTLtype
-hi link cppSTLtype Identifier
 hi clear Identifier
-hi Identifier ctermfg=202
+hi Identifier ctermfg=60
 hi clear Directory 
 hi link Directory Normal
 hi clear NERDTreeDirSlash
@@ -30,7 +29,7 @@ hi NERDTreeDirSlash ctermfg=0
 hi clear VertSplit 
 hi link VertSplit Type
 hi clear CursorLine
-hi CursorLine ctermbg=234 cterm=bold
+hi CursorLine ctermbg=233 cterm=bold
 hi clear CursorLineNr
 hi link CursorLineNr Identifier
 hi clear Statement

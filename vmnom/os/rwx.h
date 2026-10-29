@@ -3,16 +3,27 @@
 
 #include "include/plugins/nosql.h"
 
+struct playground;
+
 struct playground : nosql {
 
-	void (*sql) (playground*);
+	signal sql;
 
-	void pay() {
+	map<string, signal> servers;
 
-		this->sql(this);
+	map<string, signal> models;
 
-	}
+	map<string, signal> hosts;
 
+	void index(string file) {
+
+		this->sql(this, file);
+
+		subscribe(servers);
+		subscribe(models);
+		subscribe(hosts);
+
+	};
 };
 
 #endif

@@ -5,18 +5,20 @@ playground rwx;
 int main(int argc, char* argv[]) {
 
 	/**
+	 * server
+	 *
+	 */
+
+	rwx.servers["http"] = [] (nosql* nosql, string key) {
+
+	};
+
+	/**
 	 * sqlite 
 	 *
 	 */
 
-	rwx.select("usr/private/memory");
-
-	/**
-	 * create hosts 
-	 *
-	 */
-
-	rwx.sql = [] (playground* nosql) {
+	rwx.sql = [] (nosql* nosql, string _) {
 
 		const char* sql =
 			"CREATE TABLE IF NOT EXISTS connections ("
@@ -35,7 +37,7 @@ int main(int argc, char* argv[]) {
 	 *
 	 */
 
-	rwx.pay();
+	rwx.index("usr/private/memory");
 
 
 	return EXIT_SUCCESS;

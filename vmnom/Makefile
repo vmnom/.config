@@ -1,4 +1,4 @@
-CFLAG   := -w -pipe
+CFLAG   := -O0 -pipe -w
 CLANG   := c++ -std=c++98
 VMNOM   := usr/bin/vmnom
 SHELL   := $(shell echo $$SHELL)
