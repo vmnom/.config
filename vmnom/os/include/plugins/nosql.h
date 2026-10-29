@@ -1,12 +1,12 @@
+struct nosql;
 struct database;
 struct prototype;
-struct nosql;
 
 struct q {
 
-	sqlite3 *db = NULL;
+	sqlite3 *db;
 
-	sqlite3_stmt *stmt = NULL;
+	sqlite3_stmt *stmt;
 
 	const char *create_trigger_sql;
 
@@ -37,7 +37,7 @@ struct database : q, console  {
 			log("error opening database");
 
 		}
-		
+
 		else log("ok");
 
 	}
@@ -51,7 +51,7 @@ struct database : q, console  {
 		if (rc != SQLITE_OK) {
 
 			string error(err);
-			
+
 			log(error);
 
 		}
@@ -115,18 +115,11 @@ struct prototype : map<string, nosql*> {
 
 };
 
-struct nosql : database, prototype {
+struct nosql : prototype, database {
 
 	string innerText;
 
-	prototype prototype;;
+	prototype prototype;
 
-	void field(string key, nosql* value) {
-
-		prototype.set(key, value);
-
-	}
-
-	string serial() {}
-
+	string (*serialize) (nosql*);
 };

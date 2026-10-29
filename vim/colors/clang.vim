@@ -10,7 +10,7 @@ hi MatchParen ctermbg=none
 hi clear Type
 hi Type ctermfg=8
 hi clear PreProc
-hi PreProc ctermfg=202
+hi link PreProc Type
 hi clear Constant
 hi link Constant Type
 hi clear LineNr
@@ -37,4 +37,4 @@ hi NERDTreeFile ctermfg=60
 hi clear Visual
 hi Visual ctermbg=236
 hi clear cUserFunction
-hi cUserFunction ctermfg=11
+hi cUserFunction ctermfg=32

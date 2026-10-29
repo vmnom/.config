@@ -1,12 +1,21 @@
-bin:
-	time c++ -std=gnu++98 -Winvalid-pch -Irwx -H -pipe -Ios os/rwx.cc -o rwx/bin -lsqlite3
+SHELL := /bin/zsh
+
+PCH := rwx/index.h.pch
+
+Compile := c++ -include-pch $(PCH) -std=c++98 -H -pipe -Ios os/rwx.cc -o rwx/bin -lsqlite3 -Winvalid-pch -Irwx
+
+CompilePCH := time c++ -std=c++98 -H -pipe -x c++-header os/include/index.h -o $(PCH) 
+
+dev:
+	@$(SHELL) -c 'TIMEFMT=$$'"'"'\nplug\t%J...\nreal\t%E\ncput\t%U\nsystem\t%S'"'"'; time $(Compile)'
+	@echo
 	rwx/bin
+	@echo
 
 pch:
-	clear
-	time c++ -std=gnu++98 -H -pipe -x c++-header os/include/index.h -o rwx/index.h.gch
-	ctags -R .
-	git ls-files "*.cc" "*.h"
+	rm -rf rwx/index.h.*
+	@$(SHELL) -c 'TIMEFMT=$$'"'"'\nplug\t%J...\nreal\t%E\ncput\t%U\nsystem\t%S'"'"'; time $(CompilePCH)'
+	@echo
 
 git: 
 	git add ..
