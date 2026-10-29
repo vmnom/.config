@@ -25,7 +25,8 @@ pch:
 
 git: 
 	@echo
-	git add ..
-	git commit -m "rwx"
+	@if [ -n "$$(git status --porcelain)" ]; then \
+		git add -A && git commit -m "rwx"; \
+	fi
 	git push --all
 	@echo
