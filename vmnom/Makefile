@@ -19,7 +19,7 @@ pch:
 	@echo
 
 git: 
-	@echo "git add ../"
+	@echo "git add $(shell echo $$HOME/.config/)"
 	@if [ -n "$$(git status --porcelain)" ]; then \
 		git add -A && git commit -m "rwx"; \
 	fi
