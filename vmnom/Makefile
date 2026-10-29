@@ -1,12 +1,8 @@
 SHELL := $(shell echo $$SHELL)
-
-CC := c++ -std=c++98
-
+CC := clang++ -std=c++20
 PCH := rwx/index.h.gch
-
-compile_dev := -include-pch $(PCH)  -Ios os/rwx.cc -o rwx/bin -lsqlite3 -H -pipe 
-
-compile_pch := -pipe -x c++-header os/include/index.h -o $(PCH) 
+compile_dev :=  -include-pch rwx/index.h.gch -lsqlite3 -Ios os/rwx.cc -o rwx/bin 
+compile_pch := -x c++-header os/include/index.h -o $(PCH) 
 
 dev:
 	@echo
@@ -17,7 +13,6 @@ dev:
 
 pch:
 	@echo
-	@rm -rf rwx/index.h.* > /dev/null
 	@echo "[!$(PCH)] compiling...."
 	@echo
 	@$(SHELL) -c 'TIMEFMT=$$'"'"'\nexec\t\033[38;5;208m$(CC) $(compile_pch)\033[0m\n\nreal\t%E\ncput\t%U\nsystem\t%S'"'"'; time $(CC) $(compile_pch)'

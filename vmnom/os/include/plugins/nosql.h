@@ -1,3 +1,5 @@
+#include <sqlite3.h>
+
 struct nosql;
 struct database;
 struct prototype;
