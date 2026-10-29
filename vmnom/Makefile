@@ -2,7 +2,7 @@ CLANG   = c++ -std=c++98
 VMNOM   = rwx/vmnomxyz
 SHELL   := $(shell echo $$SHELL)
 PCH     = rwx/index.h.gch
-cdev    =  -include-pch rwx/index.h.gch -lsqlite3 -Ios os/rwx.cc -o $(VMNOM)
+cdev    =  -include os/include/index.h -lsqlite3 -Ios os/rwx.cc -o $(VMNOM)
 cpch    = -x c++-header os/include/index.h -o $(PCH) 
 
 dev:
