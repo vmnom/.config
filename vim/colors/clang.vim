@@ -7,7 +7,7 @@ hi StatusLineNC ctermfg=0 ctermbg=8 cterm=none,reverse
 let g:colors_name = "clang"
 
 hi clear NERDTreeFile
-hi NERDTreeFile ctermfg=241
+hi NERDTreeFile ctermfg=60
 hi clear Type
 hi link Type NERDTreeFile
 hi clear PreProc
@@ -21,7 +21,7 @@ hi Comment ctermfg=239
 hi clear Special
 hi clear cppSTLtype
 hi clear Identifier
-hi Identifier ctermfg=60
+hi Identifier ctermfg=8
 hi clear Directory 
 hi link Directory Normal
 hi clear NERDTreeDirSlash

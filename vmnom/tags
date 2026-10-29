@@ -13,8 +13,9 @@ CFLAG	Makefile	/^CFLAG   := -O0 -pipe -w$/;"	m
 CLANG	Makefile	/^CLANG   := c++ -std=c++98$/;"	m
 RWX_H	os/rwx.h	/^#define RWX_H$/;"	d
 SHELL	Makefile	/^SHELL   := $(shell echo $$SHELL)$/;"	m
-__anonca2d6c8b0102	os/rwx.cc	/^	rwx.sql = [] (playground* nosql) {$/;"	f	function:main	file:
-__anonca2d6c8b0202	os/rwx.cc	/^	rwx.hosts["default"] = [] (playground* nosql) {$/;"	f	function:main	file:
+__anonca2d6c8b0102	os/rwx.cc	/^	rwx.servers["http"] = [] (nosql* nosql, string key) {$/;"	f	function:main	file:
+__anonca2d6c8b0202	os/rwx.cc	/^	rwx.sql = [] (nosql* nosql, string _) {$/;"	f	function:main	file:
+backups	os/rwx.h	/^	signal backups;$/;"	m	struct:playground	typeref:typename:signal
 cdev	Makefile	/^cdev    := $(CFLAG) -include os\/include\/index.h -Ios os\/rwx.cc -o $(VMNOM) -lsqlite3$/;"	m
 console	os/include/index.h	/^struct console {$/;"	s
 cpch	Makefile	/^cpch    := $(CFLAG) -x c++-header os\/include\/index.h$/;"	m
@@ -22,25 +23,29 @@ database	os/include/plugins/nosql.h	/^struct database : q, console  {$/;"	s
 db	os/include/plugins/nosql.h	/^	sqlite3 *db;$/;"	m	struct:q	typeref:typename:sqlite3 *
 dev	Makefile	/^dev:$/;"	t
 drop	os/include/plugins/nosql.h	/^	const char *drop;$/;"	m	struct:database	typeref:typename:const char *
+e	os/include/plugins/nosql.h	/^	vector<string> e;$/;"	m	struct:validator	typeref:typename:vector<string>
+fail	os/include/plugins/nosql.h	/^	bool fail() {$/;"	f	struct:validator	typeref:typename:bool
+flush	os/include/plugins/nosql.h	/^	void flush() {$/;"	f	struct:validator	typeref:typename:void
 get	os/include/plugins/nosql.h	/^	nosql* get(string key) {$/;"	f	struct:prototype	typeref:typename:nosql *
 git	Makefile	/^git: $/;"	t
-host	os/rwx.h	/^typedef void (*host) (playground*);$/;"	t	typeref:typename:void (*)(playground *)
-hosts	os/rwx.h	/^	map<string, host> hosts;$/;"	m	struct:playground	typeref:typename:map<string,host>
-index	os/rwx.h	/^	void index() {$/;"	f	struct:playground	typeref:typename:void
-innerText	os/include/plugins/nosql.h	/^	string innerText;$/;"	m	struct:nosql	typeref:typename:string
+hosts	os/rwx.h	/^	map<string, signal> hosts;$/;"	m	struct:playground	typeref:typename:map<string,signal>
+index	os/rwx.h	/^	void index(string file) {$/;"	f	struct:playground	typeref:typename:void
 log	os/include/index.h	/^	void log(string line) {$/;"	f	struct:console	typeref:typename:void
 main	os/rwx.cc	/^int main(int argc, char* argv[]) {$/;"	f	typeref:typename:int
+models	os/rwx.h	/^	map<string, signal> models;$/;"	m	struct:playground	typeref:typename:map<string,signal>
 nosql	os/include/plugins/nosql.h	/^struct nosql : prototype, database {$/;"	s
 pch	Makefile	/^pch:$/;"	t
 playground	os/rwx.h	/^struct playground : nosql {$/;"	s
-prototype	os/include/plugins/nosql.h	/^	prototype prototype;$/;"	m	struct:nosql	typeref:typename:prototype
 prototype	os/include/plugins/nosql.h	/^struct prototype : map<string, nosql*> {$/;"	s
 q	os/include/plugins/nosql.h	/^struct q {$/;"	s
 query	os/include/plugins/nosql.h	/^	void query(const char *sql) {$/;"	f	struct:database	typeref:typename:void
 rwx	os/rwx.cc	/^playground rwx;$/;"	v	typeref:typename:playground
 select	os/include/plugins/nosql.h	/^	void select(string file) {$/;"	f	struct:database	typeref:typename:void
-serialize	os/include/plugins/nosql.h	/^	string (*serialize) (nosql*);$/;"	m	struct:nosql	typeref:typename:string (*)(nosql *)
+servers	os/rwx.h	/^	map<string, signal> servers;$/;"	m	struct:playground	typeref:typename:map<string,signal>
 set	os/include/plugins/nosql.h	/^	void set(string key, nosql* value) {$/;"	f	struct:prototype	typeref:typename:void
-sql	os/rwx.h	/^	host sql;$/;"	m	struct:playground	typeref:typename:host
+signal	os/include/plugins/nosql.h	/^typedef void (*signal) (nosql*, string);$/;"	t	typeref:typename:void (*)(nosql *,string)
+sql	os/rwx.h	/^	signal sql;$/;"	m	struct:playground	typeref:typename:signal
 src	os/include/plugins/nosql.h	/^	string src;$/;"	m	struct:q	typeref:typename:string
 stmt	os/include/plugins/nosql.h	/^	sqlite3_stmt *stmt;$/;"	m	struct:q	typeref:typename:sqlite3_stmt *
+subscribe	os/include/plugins/nosql.h	/^	void subscribe(map<string, signal> service) {$/;"	f	struct:nosql	typeref:typename:void
+validator	os/include/plugins/nosql.h	/^struct validator {$/;"	s
