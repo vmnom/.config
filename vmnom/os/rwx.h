@@ -1,43 +1,41 @@
 #ifndef RWX_H
 #define RWX_H
 
-#include <extends.h>
-
-#define HTTP 80
-
-struct nosql;
-
-struct client {
-
-	int cf;
-
-	sockaddr_in addr;
-
-	string hostname = "{username}$";
-};
-
-using connection = map<clock_t, client>;
+#include <simplify.h>
 
 struct display {
 
 	string buf;
 
-	void plc() {
+	void clear() {
 
-		cout << "\033[2J\033[H" << flush;
-
-	}
-
-	void console(string line) {
-
-		cout << badge << line << endl;
+		system("clear");
 
 	}
 };
 
-struct network : display {
+struct console : display {
 
-	int kernel;
+	void log(string line) {
+
+		cout << line << endl;
+
+	}
+
+};
+
+struct socket {
+
+	int id;
+
+	sockaddr_in addr;
+};
+
+struct network : console {
+
+	vector<socket> servers;
+
+	using connection = map<clock_t, socket>;
 
 	vector<connection> connections;
 
@@ -78,30 +76,6 @@ struct network : display {
 		return i;
 
 	}
-
-	connection mail() {
-
-		client n;
-
-		connection i;
-
-		socklen_t addr_len = sizeof(n.addr);
-
-		int client_socket = accept(
-				fd,
-				(struct sockaddr *)&n.addr,
-				&addr_len
-				);
-
-		if (client_socket != -1) {
-
-			i[clock()] = n;
-		}
-
-		return i;
-	}
-
-	sockaddr_in addr{};
 
 	void publish(int port) {
 

@@ -81,7 +81,7 @@ function! _()
 	
 	hi Statement ctermfg=132
 
-	hi Identifier ctermfg=60 cterm=bold
+	hi Identifier ctermfg=60 cterm=none
 
 	hi Normal ctermfg=248
 	hi Comment ctermfg=8

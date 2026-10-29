@@ -3,28 +3,18 @@
 int main(int argc, char* argv[]) {
 
 	/*
-	 * define
+	 * definitions.
+	 *
 	 */
 
 	playground rwx;
 
 	/*
-	 * httpd
+	 * implementations.
 	 *
 	 */
 
-	rwx.host = [] (router* routes) {
-
-		nosql vmnom = routes->group("vmnom");
-
-	};
-
-	/*
-	 * vmnom, llc
-	 *
-	 */
-
-	auto c = [] (playground* rwx) {
+	auto register = [] (playground* rwx) {
 
 		rwx->cls();
 
@@ -34,6 +24,13 @@ int main(int argc, char* argv[]) {
 
 	};
 
-	return	c(&rwx);
+	/*
+	 * routes list.
+	 *
+	 */
+
+	rwx.host["default"] = [] (router* routes) {};
+
+	return	register(&rwx);
 
 };
