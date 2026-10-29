@@ -21,6 +21,7 @@ dev:
 	$(VMNOM)
 	@echo
 git: 
+	@echo
 	@echo "git add .."
 	@if [ -n "$$(git status --porcelain)" ]; then \
 		git add -A && git commit -m "rwx"; \
