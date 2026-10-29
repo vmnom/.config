@@ -3,6 +3,6 @@ nosql:
 	@rwx/bin || true
 
 git: 
-	git add .
+	git add ..
 	git commit -m "rwx"
 	git push --all

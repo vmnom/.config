@@ -8,4 +8,6 @@ Plug 'preservim/nerdtree'
 
 Plug 'sheerun/vim-polyglot'
 
+Plug 'tpope/vim-commentary'
+
 call plug#end()
