@@ -1,5 +1,5 @@
 CFLAG   := -pipe
-CLANG   := c++ -std=c++98
+CLANG   := clang++ -std=c++98
 VMNOM   := rwx/vmnomxyz
 SHELL   := $(shell echo $$SHELL)
 cdev    := $(CFLAG) -include os/include/index.h -lsqlite3 -Ios os/rwx.cc -o $(VMNOM)
