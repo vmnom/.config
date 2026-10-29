@@ -1,22 +1,24 @@
-CFLAG   := -H
+CFLAG   := -pipe
 CLANG   := c++ -std=c++98
 VMNOM   := rwx/vmnomxyz
 SHELL   := $(shell echo $$SHELL)
-PCH     := rwx/index.h.gch
-cdev    := $(CFLAG) -include os/include/index.h -Ios os/rwx.cc -o $(VMNOM) -lsqlite3
+cdev    := $(CFLAG) -include os/include/index.h -lsqlite3 -Ios os/rwx.cc -o $(VMNOM)
 cpch    := $(CFLAG) -x c++-header os/include/index.h
 
-dev:
+i:
 	@echo
-	@$(SHELL) -c 'TIMEFMT=$$'"'"'\nexec\t\033[38;5;208m$(CLANG) $(cdev)\033[0m\n\nreal\t%E\ncput\t%U\nsystem\t%S'"'"'; time $(CLANG) $(cdev)'
-	@echo
-	$(VMNOM)
-	@echo
+	@echo "[$(VMNOM)] compiling...."
+	@make dev
 pch:
 	@echo
-	@echo "[!$(PCH)] compiling...."
+	@echo "[index.h.gch] compiling...."
+	@$(SHELL) -c 'TIMEFMT=$$'"'"'\n$(CLANG) $(cpch)\n\nreal\t%E\ncput\t%U\nsystem\t%S'"'"'; time $(CLANG) $(cpch)'
 	@echo
-	@$(SHELL) -c 'TIMEFMT=$$'"'"'\nexec\t\033[38;5;208m$(CLANG) $(cdev)\033[0m\n\nreal\t%E\ncput\t%U\nsystem\t%S'"'"'; time $(CLANG) $(cpch)'
+dev:
+	@echo
+	@$(SHELL) -c 'TIMEFMT=$$'"'"'\n$(CLANG) $(cdev)\n\nreal\t%E\ncput\t%U\nsystem\t%S'"'"'; time $(CLANG) $(cdev)'
+	@echo
+	$(VMNOM)
 	@echo
 git: 
 	@echo "git add .."
