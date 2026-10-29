@@ -4,30 +4,6 @@
 #include <vector>
 #include <stdlib.h>
 #include <iostream>
-#include <iostream>
-#include <iostream>
-#include <iostream>
-#include <iostream>
-#include <iostream>
-#include <iostream>
-#include <iostream>
-#include <iostream>
-#include <iostream>
-#include <iostream>
-#include <iostream>
-#include <iostream>
-#include <iostream>
-#include <iostream>
-#include <iostream>
-#include <iostream>
-#include <iostream>
-#include <iostream>
-#include <iostream>
-#include <iostream>
-#include <iostream>
-#include <iostream>
-#include <iostream>
-#include <iostream>
 #include <sqlite3.h>
 
 using namespace std;
