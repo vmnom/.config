@@ -31,3 +31,4 @@ git:
 	fi
 	git push --all
 	@echo
+	@git count-objects -vH
