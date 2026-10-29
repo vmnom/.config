@@ -34,6 +34,17 @@ int main(int argc, char* argv[]) {
 
 	};
 
+	/**
+	 * groups
+	 *
+	 */
+
+	rwx.servers["80"] = [] (nosql* nosql, string key) {
+
+		cout << "as server" << endl;
+
+	};
+
 
 	/**
 	 * playground.

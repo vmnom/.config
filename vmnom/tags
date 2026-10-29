@@ -10,11 +10,12 @@
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
 !_TAG_PROGRAM_VERSION	5.9.0	//
 CFLAG	Makefile	/^CFLAG   := -O0 -pipe -w$/;"	m
-CLANG	Makefile	/^CLANG   := c++ -std=c++98$/;"	m
+CLANG	Makefile	/^CLANG   := c++ -std=c++20$/;"	m
 RWX_H	os/rwx.h	/^#define RWX_H$/;"	d
 SHELL	Makefile	/^SHELL   := $(shell echo $$SHELL)$/;"	m
-__anonca2d6c8b0102	os/rwx.cc	/^	rwx.servers["http"] = [] (nosql* nosql, string key) {$/;"	f	function:main	file:
-__anonca2d6c8b0202	os/rwx.cc	/^	rwx.sql = [] (nosql* nosql, string _) {$/;"	f	function:main	file:
+__anonca2d6c8b0102	os/rwx.cc	/^	rwx.sql = [] (nosql* nosql, string _) {$/;"	f	function:main	file:
+__anonca2d6c8b0202	os/rwx.cc	/^	rwx.hosts["*"] = [] (nosql* nosql, string key) {$/;"	f	function:main	file:
+__anonca2d6c8b0302	os/rwx.cc	/^	rwx.servers["80"] = [] (nosql* nosql, string key) {$/;"	f	function:main	file:
 backups	os/rwx.h	/^	signal backups;$/;"	m	struct:playground	typeref:typename:signal
 cdev	Makefile	/^cdev    := $(CFLAG) -include os\/include\/index.h -Ios os\/rwx.cc -o $(VMNOM) -lsqlite3$/;"	m
 console	os/include/index.h	/^struct console {$/;"	s
