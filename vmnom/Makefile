@@ -1,6 +1,6 @@
 SHELL := /bin/zsh
 
-PCH := rwx/index.h.pch
+PCH := rwx/index.h.gch
 
 Compile := c++ -include-pch $(PCH) -std=c++98 -Ios os/rwx.cc -o rwx/bin -lsqlite3 -H -pipe 
 
@@ -14,7 +14,9 @@ dev:
 
 pch:
 	clear
-	rm -rf rwx/index.h.*
+	@rm -rf rwx/index.h.* || true
+	@echo "[$(PCH)]"
+	@echo
 	@$(SHELL) -c 'TIMEFMT=$$'"'"'\nlang\t[\033[38;5;208m\"%J...\"\033[0m]\nreal\t%E\ncput\t%U\nsystem\t%S'"'"'; time $(CompilePCH)'
 	@echo
 

@@ -34,7 +34,7 @@ struct database : q, console  {
 
 			sqlite3_close(db);
 
-			log("error opening database");
+			log("error_sql");
 
 		}
 
@@ -50,9 +50,9 @@ struct database : q, console  {
 
 		if (rc != SQLITE_OK) {
 
-			string error(err);
+			/* string error(err); */
 
-			log(error);
+			log("error_sql");
 
 		}
 
@@ -60,33 +60,34 @@ struct database : q, console  {
 
 	}
 
-	string store(string json) {
+	/* string store(string json) { */
 
-		int rc = sqlite3_prepare_v2(db, insert, -1, &stmt, NULL);
+	/* 	int rc = sqlite3_prepare_v2(db, insert, -1, &stmt, NULL); */
 
-		if (rc == SQLITE_OK) {
+	/* 	if (rc == SQLITE_OK) { */
 
-			sqlite3_bind_text(stmt, 1, "func_add", -1, SQLITE_STATIC);
+	/* 		sqlite3_bind_text(stmt, 1, "func_add", -1, SQLITE_STATIC); */
 
-			sqlite3_bind_int(stmt, 2, 0);
+	/* 		sqlite3_bind_int(stmt, 2, 0); */
 
-			sqlite3_bind_text(
-					stmt, 3,
-					json.c_str(),
-					static_cast<int>(json.size()),
-					SQLITE_TRANSIENT
-					);
+	/* 		sqlite3_bind_text( */
+	/* 				stmt, 3, */
+	/* 				json.c_str(), */
+	/* 				static_cast<int>(json.size()), */
+	/* 				SQLITE_TRANSIENT */
+	/* 				); */
 
-			int rc = sqlite3_step(stmt);
+	/* 		int rc = sqlite3_step(stmt); */
 
-			sqlite3_finalize(stmt);
+	/* 		sqlite3_finalize(stmt); */
 
-			if (rc != SQLITE_DONE)
-				return "ERROR";
-		}
+	/* 		if (rc != SQLITE_DONE) */
 
-		return "OK";
-	}
+	/* 			log("error_sql"); */
+	/* 	} */
+
+	/* 	log("ok"); */
+	/* } */
 
 	void sql(string file) {
 
