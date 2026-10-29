@@ -3,6 +3,16 @@
 
 #include "include/plugins/nosql.h"
 
-struct playground : nosql {};
+struct playground : nosql {
+
+	void (*sql) (playground*);
+
+	void pay() {
+
+		this->sql(this);
+
+	}
+
+};
 
 #endif

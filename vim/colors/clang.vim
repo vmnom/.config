@@ -15,12 +15,14 @@ hi link PreProc Type
 hi clear Constant
 hi link Constant Type
 hi clear LineNr
-hi LineNr ctermfg=11
+hi LineNr ctermfg=189
 hi clear Comment
 hi Comment ctermfg=239
 hi clear Special
+hi clear cppSTLtype
+hi link cppSTLtype Identifier
 hi clear Identifier
-hi Identifier ctermfg=32
+hi Identifier ctermfg=202
 hi clear Directory 
 hi link Directory Normal
 hi clear NERDTreeDirSlash
@@ -28,8 +30,9 @@ hi NERDTreeDirSlash ctermfg=0
 hi clear VertSplit 
 hi link VertSplit Type
 hi clear CursorLine
+hi CursorLine ctermbg=234 cterm=bold
 hi clear CursorLineNr
-hi CursorLineNr ctermfg=202
+hi link CursorLineNr Identifier
 hi clear Statement
 hi link Statement Identifier
 hi clear EndOfBuffer
@@ -37,6 +40,5 @@ hi link EndOfBuffer StatusLine
 hi clear Visual
 hi Visual ctermbg=236
 hi clear cUserFunction
-hi cUserFunction ctermfg=32
-
+hi link cUserFunction Identifier
 hi MatchParen ctermbg=none

@@ -27,7 +27,7 @@ function! _()
 
 	" Toggle NERDTree with Ctrl+e
 
-	nnoremap <C-e> :source ~/.config/vim/vimrc<CR>:NERDTreeToggle<CR>
+	nnoremap <C-w>h :NERDTreeToggle<CR>
 
 	colorscheme clang
 

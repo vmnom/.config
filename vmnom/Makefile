@@ -1,10 +1,9 @@
-CFLAG   := -pipe
+CFLAG   := -w -pipe
 CLANG   := c++ -std=c++98
-VMNOM   := rwx/vmnomxyz
+VMNOM   := usr/bin/vmnom
 SHELL   := $(shell echo $$SHELL)
-cdev    := $(CFLAG) -include os/include/index.h -lsqlite3 -Ios os/rwx.cc -o $(VMNOM)
+cdev    := $(CFLAG) -include os/include/index.h -Ios os/rwx.cc -o $(VMNOM) -lsqlite3
 cpch    := $(CFLAG) -x c++-header os/include/index.h
-
 
 dev:
 	@echo
@@ -14,12 +13,16 @@ dev:
 	@echo
 	$(VMNOM)
 	@echo
+
 pch:
 	@echo
 	@echo "[index.h.gch] compiling...."
 	@echo
+	ctags -R .
+	@echo
 	@$(SHELL) -c 'TIMEFMT=$$'"'"'$(CLANG) $(cpch)\n\nreal\t%E\ncput\t%U\nsystem\t%S'"'"'; time $(CLANG) $(cpch)'
 	@echo
+
 git: 
 	@echo
 	@echo "git add .."

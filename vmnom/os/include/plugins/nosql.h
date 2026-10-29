@@ -6,13 +6,11 @@ struct prototype;
 
 struct q {
 
+	string src;
+
 	sqlite3 *db;
 
 	sqlite3_stmt *stmt;
-
-	const char *create_trigger_sql;
-
-	const char *create_connections_sql;
 
 };
 
@@ -20,27 +18,17 @@ struct database : q, console  {
 
 	const char *drop;
 
-	const char *insert;
-
-	void begin(string file) {
-
-		select(file);
-
-		query(create_connections_sql);
-
-	}
-
 	void select(string file) {
 
 		if (sqlite3_open(file.c_str(), &db) != SQLITE_OK) {
 
 			sqlite3_close(db);
 
-			log("error_sql");
+			log("src:open:error");
 
 		}
 
-		else log("ok");
+		else log("src::open");
 
 	}
 
@@ -54,52 +42,14 @@ struct database : q, console  {
 
 			/* string error(err); */
 
-			log("error_sql");
+			log("src::query::error_sql");
 
 		}
 
-		else log("ok");
+		else log("src::query");
 
 	}
 
-	/* string store(string json) { */
-
-	/* 	int rc = sqlite3_prepare_v2(db, insert, -1, &stmt, NULL); */
-
-	/* 	if (rc == SQLITE_OK) { */
-
-	/* 		sqlite3_bind_text(stmt, 1, "func_add", -1, SQLITE_STATIC); */
-
-	/* 		sqlite3_bind_int(stmt, 2, 0); */
-
-	/* 		sqlite3_bind_text( */
-	/* 				stmt, 3, */
-	/* 				json.c_str(), */
-	/* 				static_cast<int>(json.size()), */
-	/* 				SQLITE_TRANSIENT */
-	/* 				); */
-
-	/* 		int rc = sqlite3_step(stmt); */
-
-	/* 		sqlite3_finalize(stmt); */
-
-	/* 		if (rc != SQLITE_DONE) */
-
-	/* 			log("error_sql"); */
-	/* 	} */
-
-	/* 	log("ok"); */
-	/* } */
-
-	void sql(string file) {
-
-		create_connections_sql = 
-
-			"select * from connections;";
-
-		begin(file);
-
-	}
 };
 
 struct prototype : map<string, nosql*> {
