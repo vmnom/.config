@@ -1,10 +1,8 @@
-SHELL := /bin/zsh
-
 PCH := rwx/index.h.gch
 
-Compile := c++ -include-pch $(PCH) -std=c++98 -Ios os/rwx.cc -o rwx/bin -lsqlite3 -H -pipe 
+Compile := clang -include-pch $(PCH) -std=c++98 -Ios os/rwx.cc -o rwx/bin -lsqlite3 -H -pipe 
 
-CompilePCH := c++ -std=c++98 -pipe -x c++-header os/include/index.h -o $(PCH) 
+CompilePCH := clang -std=c++98 -pipe -x c++-header os/include/index.h -o $(PCH) 
 
 dev:
 	clear
