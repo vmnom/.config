@@ -10,14 +10,15 @@ dev:
 	@echo
 	@echo "[$(VMNOM)] compiling...."
 	@echo
-	@$(SHELL) -c 'TIMEFMT=$$'"'"'\n$(CLANG) $(cdev)\n\nreal\t%E\ncput\t%U\nsystem\t%S'"'"'; time $(CLANG) $(cdev)'
+	@$(SHELL) -c 'TIMEFMT=$$'"'"'$(CLANG) $(cdev)\n\nreal\t%E\ncput\t%U\nsystem\t%S'"'"'; time $(CLANG) $(cdev)'
 	@echo
 	$(VMNOM)
 	@echo
 pch:
 	@echo
 	@echo "[index.h.gch] compiling...."
-	@$(SHELL) -c 'TIMEFMT=$$'"'"'\n$(CLANG) $(cpch)\n\nreal\t%E\ncput\t%U\nsystem\t%S'"'"'; time $(CLANG) $(cpch)'
+	@echo
+	@$(SHELL) -c 'TIMEFMT=$$'"'"'$(CLANG) $(cpch)\n\nreal\t%E\ncput\t%U\nsystem\t%S'"'"'; time $(CLANG) $(cpch)'
 	@echo
 git: 
 	@echo
