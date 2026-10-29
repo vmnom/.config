@@ -1,7 +1,7 @@
-#include <map>
-#include <chrono>
-#include <vector>
-#include <cerrno>
+// #include <map>
+// #include <chrono>
+// #include <vector>
+// #include <cerrno>
 #include <time.h>
 #include <fcntl.h>
 #include <variant>
@@ -13,7 +13,6 @@
 #include <fstream>
 #include <string>
 #include <sstream>
-#include <windows.h>
 #include <sqlite3.h>
 
 struct nosql;

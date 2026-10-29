@@ -1,13 +1,13 @@
 #ifndef RWX_H
 #define RWX_H
 
-struct display {
+#include <nosql.h>
 
-	string buffer;
+struct create : nosql {
 
-	void read() {
+	void verify() {
 
-		cout << "xyz" << endl;
+		cout << "database ready." << endl;
 
 	}
 

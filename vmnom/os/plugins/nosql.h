@@ -88,7 +88,7 @@ struct database : Q {
 
 	}
 
-	void elect() {
+	void up() {
 
 		open();
 
@@ -98,20 +98,16 @@ struct database : Q {
 
 	}
 
-	void every(int ms) {
-
-		while(1) {
-
-			query(drop);
-
-			Sleep(ms);
-
-		}
-	}
-
 };
 
 struct nosql : database {
+
+	void findOrCreat(string json) {
+	}
+
+}
+
+struct srv : nosql {
 
 	void connected(string json) {
 
@@ -121,14 +117,3 @@ struct nosql : database {
 
 }
 
-struct playground : nosql {
-
-	void verify() {
-
-		elect();
-
-		cout << "database ready." << endl;
-
-	}
-
-};

@@ -1,6 +1,8 @@
-#include <nosql.h>
+#include <plugins.h>
 
 int main(int argc, char* argv[]) {
+
+	// create rwx; 
 
 	string json = R"({
 	  "kind": "FunctionDecl",
@@ -17,13 +19,10 @@ int main(int argc, char* argv[]) {
 	  ]
 	})";
 
-	nosql rwx;
-
-	rwx.verify();
-
-	rwx.connected(json);
+	// rwx.verify();
+	
+	cout << json << endl;
 
 	return	EXIT_FAILURE;
 
 };
-
