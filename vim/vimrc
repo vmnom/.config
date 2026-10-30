@@ -23,16 +23,14 @@ function! _()
 
 	filetype plugin indent on
 
-	let g:NERDTreeWinSize = 38
+	let g:NERDTreeWinSize = 30
 
 	" Toggle NERDTree with Ctrl+e
 
-	nnoremap <C-w>h :NERDTreeToggle<CR>
+	nnoremap <C-e> :NERDTreeToggle<CR>
 
 	colorscheme clang
 
 endfunction
 
 call _()
-
-

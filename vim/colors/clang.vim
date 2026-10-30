@@ -1,6 +1,6 @@
 hi clear
 
-hi Normal ctermfg=247 ctermbg=0 cterm=none
+hi Normal ctermfg=230 ctermbg=0 cterm=none
 hi StatusLine ctermfg=8 ctermbg=0 cterm=none
 hi StatusLineNC ctermfg=0 ctermbg=8 cterm=none,reverse
 
@@ -21,7 +21,7 @@ hi Comment ctermfg=239
 hi clear Special
 hi clear cppSTLtype
 hi clear Identifier
-hi Identifier ctermfg=8
+hi Identifier ctermfg=202
 hi clear Directory 
 hi link Directory Normal
 hi clear NERDTreeDirSlash
@@ -29,7 +29,7 @@ hi NERDTreeDirSlash ctermfg=0
 hi clear VertSplit 
 hi link VertSplit Type
 hi clear CursorLine
-hi CursorLine ctermbg=233 cterm=bold
+hi CursorLine ctermbg=none cterm=bold
 hi clear CursorLineNr
 hi link CursorLineNr Identifier
 hi clear Statement

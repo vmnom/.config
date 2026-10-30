@@ -5,25 +5,16 @@
 
 struct playground : nosql {
 
-	signal sql;
+	host sql;
 
-	signal backups;
+	map<string, host> fields;
 
-	map<string, signal> hosts;
+	void subscribe(string file) {
 
-	map<string, signal> models;
-
-	map<string, signal> servers;
-
-	void index(string file) {
-
-		this->sql(this, file);
-
-		subscribe(hosts);
-		subscribe(models);
-		subscribe(servers);
+		options(fields);
 
 	};
+
 };
 
 #endif

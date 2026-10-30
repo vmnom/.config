@@ -1,5 +1,5 @@
 CFLAG   := -O0 -pipe -w
-CLANG   := c++ -std=c++98
+CLANG   := c++ -std=c++11
 VMNOM   := usr/bin/vmnom
 SHELL   := $(shell echo $$SHELL)
 cdev    := $(CFLAG) -include os/include/index.h -Ios os/rwx.cc -o $(VMNOM) -lsqlite3
@@ -18,7 +18,6 @@ pch:
 	@echo
 	@echo "[index.h.gch] compiling...."
 	@echo
-	ctags -R .
 	@echo
 	@$(SHELL) -c 'TIMEFMT=$$'"'"'$(CLANG) $(cpch)\n\nreal\t%E\ncput\t%U\nsystem\t%S'"'"'; time $(CLANG) $(cpch)'
 	@echo

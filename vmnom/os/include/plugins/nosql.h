@@ -1,10 +1,10 @@
 #include <sqlite3.h>
 
-struct nosql;
-struct database;
 struct prototype;
+struct database;
+struct nosql;
 
-typedef void (*signal) (nosql*, string);
+typedef void (*host) (nosql*, string);
 
 struct q {
 
@@ -54,28 +54,15 @@ struct database : q, console  {
 
 };
 
-struct validator {
-
-	vector<string> e;
-
-	bool fail() {
-		return e.empty();
-	}
-
-	void flush() {
-		e.clear();
-	}
-};
-
 struct prototype : map<string, nosql*> {
 
-	void set(string key, nosql* value) {
+	void resolve(string key, nosql* value) {
 
 		(*this)[key] = value;
 
 	}
 
-	nosql* get(string key) {
+	nosql* promise(string key) {
 
 		return (*this)[key];
 
@@ -83,16 +70,38 @@ struct prototype : map<string, nosql*> {
 
 };
 
-struct nosql : prototype, database {
+struct nosql : database {
 
-	void subscribe(map<string, signal> service) {
+	string innerText;
 
-		map<string, signal>::iterator it;
+	prototype prototype;
+
+	nosql* option(string option) {
+
+		prototype.resolve(option, this);
+
+		return prototype.promise(option);
+
+	}
+
+	void put(string key, string text) {
+
+		option(key)->value(text);
+	}
+
+	void value(string value) {
+
+		innerText = value;
+
+	}
+
+	void options(map<string, host> service) {
+
+		map<string, host>::iterator it;
 
 		for (it = service.begin(); it != service.end(); ++it) {
 			it->second(this, it->first);
 		}
 
 	}
-
 };

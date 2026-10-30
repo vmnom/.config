@@ -5,7 +5,7 @@ playground rwx;
 int main(int argc, char* argv[]) {
 
 	/**
-	 * sqlite engine, readonly.
+	 * sqlite
 	 *
 	 */
 
@@ -19,39 +19,31 @@ int main(int argc, char* argv[]) {
 			"created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP"
 			");";
 
-		nosql->query(sql);
+		/* nosql->query(sql); */
 
 	};
 
 	/**
-	 * groups
+	 * options
 	 *
 	 */
 
-	rwx.hosts["*"] = [] (nosql* nosql, string key) {
+	rwx.fields["server"] = [] (nosql* nosql, string key) {
 
-		cout << "ready" << endl;
-
-	};
-
-	/**
-	 * groups
-	 *
-	 */
-
-	rwx.servers["80"] = [] (nosql* nosql, string key) {
-
-		cout << "as server" << endl;
+		nosql->option(key)->put("id", "32");
 
 	};
-
 
 	/**
 	 * playground.
 	 *
 	 */
 
-	rwx.index("usr/private/memory");
+	rwx.subscribe("usr/private/memory");
+
+	/*
+	 *
+	 **/
 
 	return EXIT_SUCCESS;
 
