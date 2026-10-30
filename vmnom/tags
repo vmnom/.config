@@ -1,0 +1,31 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/root/.config/vmnom/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	//
+Query	os/plugins/nosql.h	/^struct Query {$/;"	s
+RWX_H	os/rwx.h	/^#define RWX_H$/;"	d
+create_table_sql	os/plugins/nosql.h	/^	const char *create_table_sql =$/;"	m	struct:Query	typeref:typename:const char *
+create_trigger_sql	os/plugins/nosql.h	/^	const char *create_trigger_sql =$/;"	m	struct:Query	typeref:typename:const char *
+database	os/plugins/nosql.h	/^struct database : Query {$/;"	s
+db	os/plugins/nosql.h	/^	sqlite3 *db = NULL;$/;"	m	struct:Query	typeref:typename:sqlite3 *
+drop	os/plugins/nosql.h	/^	const char *drop = "DELETE FROM leads WHERE registred = 0;";$/;"	m	struct:Query	typeref:typename:const char *
+git	Makefile	/^git: $/;"	t
+hold	os/plugins/nosql.h	/^	string hold(string json) {$/;"	f	struct:database	typeref:typename:string
+item	os/plugins/nosql.h	/^	const char *item =$/;"	m	struct:Query	typeref:typename:const char *
+main	os/rwx.cc	/^int main(int argc, char* argv[]) {$/;"	f	typeref:typename:int
+man	Makefile	/^man:$/;"	t
+nosql	os/plugins/nosql.h	/^struct nosql : database {};$/;"	s
+open	os/plugins/nosql.h	/^	string open(string file) {$/;"	f	struct:database	typeref:typename:string
+pch	Makefile	/^pch:$/;"	t
+playground	os/rwx.h	/^struct playground : nosql {$/;"	s
+query	os/plugins/nosql.h	/^	string query(const char *sql) {$/;"	f	struct:database	typeref:typename:string
+stmt	os/plugins/nosql.h	/^	sqlite3_stmt *stmt = NULL;$/;"	m	struct:Query	typeref:typename:sqlite3_stmt *
+up	os/plugins/nosql.h	/^	void up(string file) {$/;"	f	struct:database	typeref:typename:void
+verify	os/rwx.h	/^	void verify() {$/;"	f	struct:playground	typeref:typename:void

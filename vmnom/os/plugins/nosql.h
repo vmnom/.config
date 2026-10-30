@@ -1,42 +1,38 @@
-#include <plugins.h>
+struct Query {
 
-struct Q {
+	sqlite3 *db = NULL;
 
-	const char *create_trigger_sql =
-		"CREATE TRIGGER IF NOT EXISTS leads"
-		"AFTER INSERT ON json_data"
-		"WHEN NEW.created_at IS NULL"
-		"BEGIN"
-		"	UPDATE json_data"
-		"	SET created_at = datetime('now')"
-		"	WHERE id = NEW.id;"
-		"END;";
+	sqlite3_stmt *stmt = NULL;
 
 	const char *create_table_sql =
 		"CREATE TABLE IF NOT EXISTS leads ("
 		"id TEXT PRIMARY KEY,"
-		"json TEXT NOT NULL CHECK(json_valid(data)),"
-		"registred BOOLEAN NOT NULL DEFAULT 0,"
-		"created_at TEXT"
+		"data TEXT NOT NULL CHECK(json_valid(data)),"
+		"readonly BOOLEAN NOT NULL DEFAULT 0,"
+		"created TEXT"
 		");";
 
+	const char *create_trigger_sql =
+		"CREATE TRIGGER IF NOT EXISTS leads"
+		"AFTER INSERT ON leads"
+		"WHEN created IS NULL"
+		"BEGIN"
+		"	UPDATE leads"
+		/* "	SET created = datetime('now')" */
+		"	WHERE id = NEW.id;"
+		"END;";
+
 	const char *item =
-		"INSERT INTO json_data (id, registred, data)"
+		"INSERT INTO leads (data, creation)"
 		"VALUES (?1, ?2);";
 
 	const char *drop = "DELETE FROM leads WHERE registred = 0;";
 
 };
 
-struct database : Q {
+struct database : Query {
 
-	using Error = string;
-
-	sqlite3 *db = nullptr;
-
-	sqlite3_stmt *stmt = nullptr;
-
-	void hold(string json) {
+	string hold(string json) {
 
 		int rc = sqlite3_prepare_v2(db, item, -1, &stmt, NULL);
 
@@ -55,23 +51,29 @@ struct database : Q {
 
 			int rc = sqlite3_step(stmt);
 
-			if (rc != SQLITE_DONE)
-				fprintf(stderr, "Insert error: %s\n", sqlite3_errmsg(db));
-
 			sqlite3_finalize(stmt);
+
+			if (rc != SQLITE_DONE)
+				return "ERROR";
 		}
+
+		return "OK";
 	}
 
-	void open() {
+	string open(string file) {
 
-		if (sqlite3_open("rwx/private/cpu", &db) != SQLITE_OK) {
-			fprintf(stderr, "Open error: %s\n", sqlite3_errmsg(db));
+		if (sqlite3_open(file.c_str(), &db) != SQLITE_OK) {
+
 			sqlite3_close(db);
+
+			return "error opening database.";
+
 		}
 
+		return "OK";
 	}
 
-	Error query(const char *sql) {
+	string query(const char *sql) {
 
 		char *err = NULL;
 
@@ -84,36 +86,20 @@ struct database : Q {
 
 		string error(err);
 
-		return "ERROR: " + error;
+		return "QUERY: " + error;
 
 	}
 
-	void up() {
+	void up(string file) {
 
-		open();
+		cout << open(file) << endl;
 
-		query(create_table_sql);
+		cout << query(create_table_sql) << endl;
 
-		query(create_trigger_sql);
+		cout << query(create_trigger_sql) << endl;
 
 	}
 
 };
 
-struct nosql : database {
-
-	void findOrCreat(string json) {
-	}
-
-}
-
-struct srv : nosql {
-
-	void connected(string json) {
-
-		findOrCreate(json);
-
-	}
-
-}
-
+struct nosql : database {};

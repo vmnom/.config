@@ -1,13 +1,11 @@
 #ifndef RWX_H
 #define RWX_H
 
-#include <nosql.h>
+#include <index.h>
 
-struct create : nosql {
+struct playground : nosql {
 
 	void verify() {
-
-		cout << "database ready." << endl;
 
 	}
 

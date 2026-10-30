@@ -1,28 +1,12 @@
-#include <plugins.h>
+#include <rwx.h>
 
 int main(int argc, char* argv[]) {
 
-	// create rwx; 
+	playground rwx;
 
-	string json = R"({
-	  "kind": "FunctionDecl",
-	  "name": "add",
-	  "inner": [
-	    {
-	      "kind": "ParmVarDecl",
-	      "name": "a"
-	    },
-	    {
-	      "kind": "ParmVarDecl",
-	      "name": { "id": { "xyz": "nice" } }
-	    }
-	  ]
-	})";
+	rwx.up("rwx/private/cpu");
 
-	// rwx.verify();
-	
-	cout << json << endl;
+	rwx.verify();
 
-	return	EXIT_FAILURE;
-
+	return 0;
 };
