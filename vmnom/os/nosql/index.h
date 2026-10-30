@@ -2,23 +2,43 @@
 #define NOSQL_H
 
 struct nosql;
+struct window;
 
 #include <map>
 #include <string>
+#include <stdio.h>
 #include <variant>
-#include <iostream>
 
 using namespace std;
 
-using Template = variant<string, int, nosql*>;
+struct prototype : map<string, string> {
 
-struct console {
+	nosql* console;
 
-	void log(map<string, Template>* options) {
+	void join(nosql* value) {
+		console = value;
+	}
 
-		for (const auto& [key, value] : *options) {
+	void assign (string, string);
+	void valueOf (void);
 
-			cout << key << endl;
+};
+
+struct window : prototype {
+
+	void log(prototype* ptr) {
+
+		iterator it;
+
+		for (it = (*ptr).begin(); it != (*ptr).end(); ++it) {
+
+			printf("%s = %d\n",
+
+					it->first.c_str(),
+
+					it->second
+
+			      );
 
 		}
 
@@ -26,34 +46,18 @@ struct console {
 
 };
 
-struct prototype : map<string, Template>, console {
-
-	string selected;
-
-	prototype* select(string key) {
-
-		selected = key;
-
-		return this;
-
+struct nosql : window {
+	void init() {
+		join(this);
 	}
-
-	prototype* assign(string key, Template value) {
-
-		(*this)[key] = value;
-
-		return this;
-
-	}
-
-	void valueOf() {
-
-		log(this);
-
-	}
-
 };
 
-struct nosql : prototype {};
+inline void prototype::assign(string key, string value) {
+	(*this)[key] = value;
+}
+
+inline void prototype::valueOf() {
+	(*console).log(this);
+}
 
 #endif

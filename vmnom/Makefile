@@ -1,9 +1,9 @@
-CLANG   := c++ -std=c++17
+CLANG   := c++ -std=c++98
 VMNOM   := usr/bin/vmnom
 CFLAG   := -w -pipe
 SHELL   := $(shell echo $$SHELL)
 cdev    := $(CFLAG) -lsqlite3 -Ios -Ios/nosql os/rwx.cc -o $(VMNOM) 
-cpch    := $(CFLAG) -x c++-header os/include/index.h
+cpch    := $(CFLAG) -x c++-header os/nosql/index.h
 
 dev:
 	@echo
