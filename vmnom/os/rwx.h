@@ -1,20 +1,8 @@
 #ifndef RWX_H
 #define RWX_H
 
-#include "include/plugins/nosql.h"
+#include <nosql/index.h>
 
-struct playground : nosql {
-
-	host sql;
-
-	map<string, host> fields;
-
-	void subscribe(string file) {
-
-		options(fields);
-
-	};
-
-};
+struct playground : nosql {};
 
 #endif

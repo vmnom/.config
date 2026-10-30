@@ -1,6 +1,6 @@
 hi clear
 
-hi Normal ctermfg=230 ctermbg=0 cterm=none
+hi Normal ctermfg=138 ctermbg=0 cterm=none
 hi StatusLine ctermfg=8 ctermbg=0 cterm=none
 hi StatusLineNC ctermfg=0 ctermbg=8 cterm=none,reverse
 
