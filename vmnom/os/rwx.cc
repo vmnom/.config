@@ -6,12 +6,14 @@ playground rwx;
 
 int main(int argc, char* argv[]) {
 
+	nosql username;
+
 	/*
 	 *
 	 *
 	 */
 
-	rwx.assign("username", "vmnomx");
+	rwx.assign("username", &username);
 
 	/*
 	 *

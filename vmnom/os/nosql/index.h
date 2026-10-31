@@ -2,25 +2,32 @@
 #define NOSQL_H
 
 struct nosql;
-struct window;
+struct prototype;
 
 #include <map>
 #include <string>
-#include <stdio.h>
 #include <variant>
+#include <iostream>
 
 using namespace std;
 
-struct prototype : map<string, string> {
+struct prototype : map<string, nosql*> {
 
 	nosql* console;
 
 	void join(nosql* value) {
+
 		console = value;
+
 	}
 
-	void assign (string, string);
+	void assign (string, nosql*);
+
 	void valueOf (void);
+
+	string first() {
+		return this->begin()->first;
+	}
 
 };
 
@@ -30,34 +37,36 @@ struct window : prototype {
 
 		iterator it;
 
-		for (it = (*ptr).begin(); it != (*ptr).end(); ++it) {
-
-			printf("%s = %d\n",
-
-					it->first.c_str(),
-
-					it->second
-
-			      );
-
-		}
+		cout << first() << endl;
 
 	}
 
 };
 
 struct nosql : window {
-	void init() {
-		join(this);
+
+	void init(prototype* parent) {
+
+		parent->join(this);
+
 	}
+
+	string toString() {
+		return "hi";
+	}
+
 };
 
-inline void prototype::assign(string key, string value) {
+inline void prototype::assign(string key, nosql* value) {
+
 	(*this)[key] = value;
+
 }
 
 inline void prototype::valueOf() {
+
 	(*console).log(this);
+
 }
 
 #endif
