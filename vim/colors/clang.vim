@@ -21,7 +21,7 @@ hi Comment ctermfg=239
 hi clear Special
 hi clear cppSTLtype
 hi clear Identifier
-hi Identifier ctermfg=202
+hi Identifier ctermfg=25
 hi clear Directory 
 hi link Directory Normal
 hi clear NERDTreeDirSlash

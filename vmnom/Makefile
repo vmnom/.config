@@ -1,9 +1,11 @@
-CLANG   := c++ -std=c++98
+CLANG   := c++
+CMAKE   := -std=c++98
 VMNOM   := usr/bin/vmnom
-CFLAG   := -w -pipe
+CFLAG   := -w -H -pipe
+CPCH    := -include/root/.config/vmnom/os/nosql/index.h
 SHELL   := $(shell echo $$SHELL)
-cdev    := $(CFLAG) -lsqlite3 -Ios -Ios/nosql os/rwx.cc -o $(VMNOM) 
-cpch    := $(CFLAG) -x c++-header os/nosql/index.h
+cdev    := $(CMAKE) $(CFLAG) -lsqlite3 $(CPCH) -Ios/nosql -Ios os/rwx.cc -o $(VMNOM) 
+cpch    := $(CMAKE) $(CFLAG) -O0 -x c++-header os/nosql/index.h
 
 dev:
 	@echo
@@ -14,7 +16,7 @@ dev:
 	$(VMNOM)
 	@echo
 
-pch:
+pch98:
 	@echo
 	@echo "[index.h.gch] compiling...."
 	@echo

@@ -2,36 +2,23 @@
 
 using namespace std;
 
-playground rwx;
+playground rwx = {0};
 
 int main(int argc, char* argv[]) {
 
-	nosql username;
+	/*
+	 * httpd
+	 *
+	 **/
+
+	rwx.listen("::", 80);
 
 	/*
 	 *
-	 *
 	 */
 
-	rwx.assign("username", &username);
+	rwx.init();
 
-	/*
-	 *
-	 */
-
-	/* rwx.select("user")->assign("id", "0"); */
-
-	/*
-	 *
-	 *
-	 */
-
-	rwx.valueOf();
-
-	/*
-	 *
-	 *
-	 */
 
 	return 0;
 
