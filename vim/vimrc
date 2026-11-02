@@ -1,5 +1,9 @@
 function! _()
 
+	set hidden
+	set autoread
+	set updatetime=102
+
 	" dotfiles
 
 	set tags=~/config/vmnom/tags;,tags
@@ -31,7 +35,7 @@ function! _()
 
 	colorscheme clang
 
-	set makeprg=clear\ &&\ make
+	set makeprg=make
 
 endfunction
 

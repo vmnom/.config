@@ -1,6 +1,6 @@
 hi clear
 
-hi Normal ctermfg=138 ctermbg=0 cterm=none
+hi Normal ctermfg=11 ctermbg=0 cterm=none
 hi StatusLine ctermfg=8 ctermbg=0 cterm=none
 hi StatusLineNC ctermfg=0 ctermbg=8 cterm=none,reverse
 
@@ -17,8 +17,9 @@ hi link Constant Type
 hi clear LineNr
 hi LineNr ctermfg=189
 hi clear Comment
-hi Comment ctermfg=239
+hi Comment ctermfg=143
 hi clear Special
+hi link Special StatusLine
 hi clear cppSTLtype
 hi clear Identifier
 hi Identifier ctermfg=25
@@ -41,3 +42,4 @@ hi Visual ctermbg=236
 hi clear cUserFunction
 hi link cUserFunction Identifier
 hi MatchParen ctermbg=none
+hi cStorageClass ctermfg=9

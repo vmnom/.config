@@ -2,82 +2,31 @@
 #define RWX_H
 
 #include <index.h>
-#include <typeinfo>
-
-class protocol : map<string, Any*> {
-
-	public:
-
-		Any* options(string key);
-
-		Any* option(string key, Any value);
-};
-
-struct nosql {
-
-	Any*	prototype;
-
-};
-
-struct Any : public protocol {
-
-	public:
-
-		Nosql	prototype;
-		String	text;
-		Double	number;
-
-		Any(string value) {
-			text = {value};
-		}
-
-		Any(double value) {
-			number = {value};
-		}
-
-		Any(nosql value) {
-			prototype = {&value};
-		}
-
-	public:
-
-
-
-		void valueOf() {
-			cout << typeid(this).name() << endl;
-		}
-		
-		Any* clone() {
-			return this;
-		}
-
-};
 
 struct playground {
 
-	Any	window;
+	Any window;
 
-	const void listen(const string addr, const int port) {
-		window.option("addr", {addr});
-		window.option("port", {port});
-	}
+	void listen(string addr, int port) {
 
-	const void init() {
-		window.options("port")->valueOf();
+		window.option("a", addr);
+
+		window.option("b", addr);
+
+		window.option("c", addr);
+
+/* 		window.option("port", port); */
+
+/* 		Any console = {0}; */
+
+/* 		console.option("log", {"text here"}); */
+
+/* 		window.option("console", console); */
+
+		window.log();
+
 	}
 
 };
-
-inline Any* protocol::options(string key) {
-	return (*this)[key];
-}
-
-inline Any* protocol::option(string key, Any value) {
-
-	(*this)[key] = &value;
-
-	return protocol::options(key);
-
-}
 
 #endif
