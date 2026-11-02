@@ -7,6 +7,7 @@ struct nosql;
 
 #include <map>
 #include <string>
+#include <sstream>
 #include <iostream>
 
 using namespace std;
@@ -37,29 +38,21 @@ struct protocol : map<string, Any*> {
 
 	}
 
+	Any* load (string key) {
+
+		return (*this)[key];
+
+	}
+
 };
 
 struct Any {
 
-	protected:
-
-		int depth = 0;
-
 	public:
-
-		string valueOf() {
-
-			if(!text.value.empty())
-
-				return text.value;
-
-			return "undefined";
-
-		};
 
 		String text;
 
-		Any(const string value) {
+		Any(string value) {
 
 			text = {value};
 
@@ -73,54 +66,100 @@ struct Any {
 
 		}
 
-		Nosql ppt;
+		Nosql node;
 
 		Any(nosql* value) {
 
-			ppt = {value};
+			node = {value};
 
 		}
 
 	public:
 
+		Any* parent;
+
 		protocol prototype;
 
 		void option (string key, Any value) {
 
+			parent = this;
+
 			prototype.add(key, this);
+			
+			depth = parent->depth + 1;
 
 		}
 
-		string jsonKeyword(string key) {
 
-			return key;
+	public:
+
+		string value() {
+
+			if(!text.value.empty())
+
+				return text.value;
+
+			if(number.value) {
+
+				char str[32];
+
+				sprintf(str, "%d", number.value);
+
+				return str;
+			}
+
+
+			return "undefined";
 
 		};
 
-		string serial() {
+		string serial(string key) {
 
-			string results = "{}";
+			Any* target = prototype.load("email");
 
-			if(!prototype.empty()) {
+			if(!target) {
 
-				results = "{";
-
-				int t = 1;
-
-				for (const auto& option : prototype) {
-
-					results += "\n" + string(depth + t, '\t') + option.first + ": " + option.second->valueOf();
-
-				}
-
-				results += "\n" + string(depth, '\t') + "}";
+				return "{}";
 
 			}
 
-			return results;
+			return target->value();
+
+			string buffer = "{";
+
+			typing(
+
+					buffer, 
+					key,
+					"vv"
+						);
+
+			/* 				int t = 1; */
+
+			/* 				for (const auto& option : prototype) { */
+
+			/* 					results += "\n" + string(depth + t, '\t') + option.first + ": " + option.second->valueOf(); */
+
+			/* 				} */
+
+			/* 				results += "\n" + string(depth, '\t') + "}"; */
+
+			/* 			} */
+
+
+			return buffer;
 
 		}
 
+	protected:
+
+		int depth = 0;
+
+		void typing(string&buffer, string key, string node) {
+
+			buffer += "\r\n" + string(depth,'\t') + key + ":" + node;
+
+		}
 };
 
 #endif

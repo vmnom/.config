@@ -11,7 +11,7 @@ dev:
 	@echo
 	@echo "[$(VMNOM)] compiling...."
 	@echo
-	@$(SHELL) -c 'TIMEFMT=$$'"'"'$(CLANG) $(cdev)\n\nreal\t%E\ncput\t%U\nsystem\t%S'"'"'; time $(CLANG) $(cdev)'
+	$(SHELL) -c 'TIMEFMT=$$'"'"'$(CLANG) $(cdev)\n\nreal\t%E\ncput\t%U\nsystem\t%S'"'"'; time $(CLANG) $(cdev)'
 	@echo
 	$(VMNOM)
 	@echo
@@ -21,7 +21,7 @@ pch:
 	@echo "[index.h.gch] compiling...."
 	@echo
 	@echo
-	@$(SHELL) -c 'TIMEFMT=$$'"'"'$(CLANG) $(cpch)\n\nreal\t%E\ncput\t%U\nsystem\t%S'"'"'; time $(CLANG) $(cpch)'
+	$(SHELL) -c 'TIMEFMT=$$'"'"'$(CLANG) $(cpch)\n\nreal\t%E\ncput\t%U\nsystem\t%S'"'"'; time $(CLANG) $(cpch)'
 	@echo
 
 git: 

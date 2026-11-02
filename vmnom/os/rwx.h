@@ -10,6 +10,7 @@ struct playground {
 	void listen(string addr, int port) {
 
 		window.option("name", {"username"});
+
 		window.option("email", {"mail@gmail.com"});
 
 /* 		window.option("b", addr); */
@@ -30,7 +31,7 @@ struct playground {
 
 /* 		window.option("console", console); */
 
-		cout << window.serial();
+		cout << window.serial("email");
 
 	}
 
