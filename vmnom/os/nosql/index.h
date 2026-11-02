@@ -38,10 +38,11 @@ struct protocol : map<string, Any*> {
 
 	}
 
-	Any* load (string key) {
+	bool load (string key, Any* target) {
 
-		return (*this)[key];
+		target = (*this)[key];
 
+		return target;
 	}
 
 };
@@ -93,61 +94,23 @@ struct Any {
 
 	public:
 
-		string value() {
+		string value(string key) {
 
-			if(!text.value.empty())
-
-				return text.value;
-
-			if(number.value) {
-
-				char str[32];
-
-				sprintf(str, "%d", number.value);
-
-				return str;
-			}
-
-
-			return "undefined";
+			return text.value;
 
 		};
 
 		string serial(string key) {
 
-			Any* target = prototype.load("email");
+			Any* target;
 
-			if(!target) {
+			if(!prototype.load("email", target)) {
 
 				return "{}";
 
 			}
 
-			return target->value();
-
-			string buffer = "{";
-
-			typing(
-
-					buffer, 
-					key,
-					"vv"
-						);
-
-			/* 				int t = 1; */
-
-			/* 				for (const auto& option : prototype) { */
-
-			/* 					results += "\n" + string(depth + t, '\t') + option.first + ": " + option.second->valueOf(); */
-
-			/* 				} */
-
-			/* 				results += "\n" + string(depth, '\t') + "}"; */
-
-			/* 			} */
-
-
-			return buffer;
+			return "{\r\n" + string(depth, '\t') + key + ":" + target->value(key) + "\r\n}";
 
 		}
 
