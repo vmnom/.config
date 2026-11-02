@@ -25,13 +25,13 @@ struct playground {
 
 /* 		window.option("port", port); */
 
-/* 		Any console = {0}; */
+		Any log = {0};
 
-/* 		console.option("log", {"text here"}); */
+		/* log.option("msg", {"text here"}); */
 
-/* 		window.option("console", console); */
+		/* window.assign("console", &log); */
 
-		cout << window.serial("email");
+		cout << window.valueOf();
 
 	}
 
