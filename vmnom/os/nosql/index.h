@@ -12,15 +12,21 @@ struct nosql;
 using namespace std;
 
 struct String {
+
 	string value;
+
 };
 
 struct Int {
+
 	int value;
+
 };
 
 struct Nosql {
+
 	nosql* value;
+
 };
 
 struct protocol : map<string, Any*> {
@@ -33,47 +39,51 @@ struct protocol : map<string, Any*> {
 
 };
 
-struct Compiler {
-
-	protocol prototype;
-
-};
-
-struct Any : Compiler {
+struct Any {
 
 	protected:
 
-		int counter = 0;
+		int depth = 0;
 
 	public:
+
+		string valueOf() {
+
+			if(!text.value.empty())
+
+				return text.value;
+
+			return "undefined";
+
+		};
+
+		String text;
+
+		Any(const string value) {
+
+			text = {value};
+
+		}
 
 		Int number;
 
 		Any(int value) {
+
 			number = {value};
+
 		}
 
 		Nosql ppt;
 
 		Any(nosql* value) {
+
 			ppt = {value};
-		}
-
-		String text;
-
-		Any(const string value) {
-			text = {value};
-		}
-
-		string toString() {
-
-			return "value";
 
 		}
 
 	public:
 
-		int n = 1;
+		protocol prototype;
 
 		void option (string key, Any value) {
 
@@ -81,27 +91,33 @@ struct Any : Compiler {
 
 		}
 
-		void log(int level = 0) {
+		string jsonKeyword(string key) {
 
-			const string BRAKETOPEN = "{\r\n\t";
-			const string BRAKETCLOSE = "}";
+			return key;
 
+		};
 
-			cout << BRAKETOPEN << endl;
+		string serial() {
 
-			for (const auto& option : prototype) {
+			string results = "{}";
 
-				cout << sprintf(string(n++, '\r') + option.first, option.second);
+			if(!prototype.empty()) {
+
+				results = "{";
+
+				int t = 1;
+
+				for (const auto& option : prototype) {
+
+					results += "\n" + string(depth + t, '\t') + option.first + ": " + option.second->valueOf();
+
+				}
+
+				results += "\n" + string(depth, '\t') + "}";
 
 			}
 
-			cout << BRAKETCLOSE << endl;
-
-		}
-
-		string sprintf(string key, Any* value) {
-
-			return key + ":id";
+			return results;
 
 		}
 

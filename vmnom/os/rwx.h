@@ -9,11 +9,18 @@ struct playground {
 
 	void listen(string addr, int port) {
 
-		window.option("a", addr);
+		window.option("name", {"username"});
+		window.option("email", {"mail@gmail.com"});
 
-		window.option("b", addr);
+/* 		window.option("b", addr); */
 
-		window.option("c", addr);
+/* 		window.option("c", addr); */
+
+/* 		Any console(0); */
+
+/* 		console.option("log", {"alert"}); */
+
+/* 		window.option("console", {console}); */
 
 /* 		window.option("port", port); */
 
@@ -23,7 +30,7 @@ struct playground {
 
 /* 		window.option("console", console); */
 
-		window.log();
+		cout << window.serial();
 
 	}
 
