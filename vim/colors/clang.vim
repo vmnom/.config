@@ -1,6 +1,6 @@
 hi clear
 
-hi Normal ctermfg=202 ctermbg=0 cterm=none
+hi Normal ctermfg=30 ctermbg=0 cterm=none
 hi StatusLine ctermfg=8 ctermbg=0 cterm=none
 hi StatusLineNC ctermfg=0 ctermbg=8 cterm=none,reverse
 
@@ -25,8 +25,7 @@ hi clear Identifier
 hi Identifier ctermfg=25
 hi clear Directory 
 hi link Directory Normal
-hi clear NERDTreeDirSlash
-hi NERDTreeDirSlash ctermfg=0 
+hi link NERDTreeDirSlash Directory
 hi clear VertSplit 
 hi link VertSplit Type
 hi clear CursorLine

@@ -1,16 +1,17 @@
 VMNOM   := usr/bin/vmnom
 CLANG   := c++
 CMAKE   := -std=c++11
-CFLAG   := -w -H -pipe 
-CPCH    := -include./os/nosql/index.h
+CFLAG   := -w -H -pipe
 SHELL   := $(shell echo $$SHELL)
-SOURCE  := os/nosql/empty.cc
-# SOURCE  += os/rwx/empty.cc
+CPCH    := -include./os/nosql/nosql.h
+SOURCE   := main.cc
+HEADERS  := -lsqlite3
+HEADERS  += -Ios/nosql
 
-cdev    := $(CMAKE) $(CFLAG) -lsqlite3 $(CPCH) -Ios/nosql -Ios $(SOURCE) -o $(VMNOM) 
-cpch    := $(CMAKE) $(CFLAG) -O0 -x c++-header os/nosql/index.h
+cpch    := $(CMAKE) $(CFLAG) -O0 -x c++-header os/nosql/nosql.h
+cdev    := $(CMAKE) $(CFLAG) $(CPCH) $(HEADERS) $(SOURCE) -o $(VMNOM) 
 
-dev:
+cc:
 	@echo
 	@echo "[$(VMNOM)] compiling...."
 	@echo
@@ -36,3 +37,7 @@ git:
 	git push --all
 	@echo
 	@git count-objects -vH
+
+dev:
+	make pch
+	make
