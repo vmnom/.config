@@ -9,13 +9,13 @@ HEADERS  := -lsqlite3
 HEADERS  += -Ios/nosql
 
 cpch    := $(CMAKE) $(CFLAG) -O0 -x c++-header os/nosql/nosql.h
-cdev    := $(CMAKE) $(CFLAG) $(HEADERS) $(CPCH) $(SOURCE) -o $(VMNOM) 
+cdev    := $(CMAKE) $(CFLAG) $(HEADERS) $(CPCH) $(SOURCE) -o $(VMNOM)
 
 cc:
 	@echo
 	@echo "[$(VMNOM)] compiling...."
 	@echo
-	$(SHELL) -c 'TIMEFMT=$$'"'"'$(CLANG) $(cdev)\n\nreal\t%E\ncput\t%U\nsystem\t%S'"'"'; time $(CLANG) $(cdev)'
+	@$(SHELL) -c '$(CLANG) $(cdev)'
 	@echo
 	$(VMNOM)
 	@echo
@@ -25,7 +25,7 @@ pch:
 	@echo "[nosql.h.gch] compiling...."
 	@echo
 	@echo
-	$(SHELL) -c 'TIMEFMT=$$'"'"'$(CLANG) $(cpch)\n\nreal\t%E\ncput\t%U\nsystem\t%S'"'"'; time $(CLANG) $(cpch)'
+	@$(SHELL) -c 'time $(CLANG) $(cpch)'
 	@echo
 
 git: 

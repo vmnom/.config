@@ -21,6 +21,12 @@ class Nosql : public map<string, Nosql*> {
 
 		Nosql* prototype;
 
+		void monostate() {
+
+			prototype = this;
+
+		}
+
 	public:
 
 		string recieve;
@@ -83,15 +89,13 @@ class Nosql : public map<string, Nosql*> {
 
 	public:
 
-		void test() {
+		string mailbox() {
 
-			cout << endl << "vmnom/nosql, tests" << endl;
-
-			prototype = this;
+			monostate();
 
 			prototype->option("inbox", {0});
 
-			cout << prototype->valueOf();
+			return prototype->valueOf();
 
 		}
 

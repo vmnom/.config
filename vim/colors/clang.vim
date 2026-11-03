@@ -1,9 +1,10 @@
 hi clear
 
 hi clear NERDTreeFile
+
 hi NERDTreeFile ctermfg=189
 
-hi Normal ctermfg=60 ctermbg=0 cterm=none
+hi Normal ctermfg=112 ctermbg=233 cterm=none
 hi StatusLine ctermfg=136 ctermbg=18 cterm=none
 hi StatusLineNC ctermfg=gray ctermbg=gray cterm=none
 
@@ -22,10 +23,10 @@ hi LineNr ctermfg=8
 hi clear Comment
 hi Comment ctermfg=White
 hi clear Special
-hi link Special StatusLine
+hi link Special String
 hi clear cppSTLtype
 hi clear Identifier
-hi Identifier ctermfg=25
+hi Identifier ctermfg=202
 hi clear Directory 
 hi link Directory Normal
 hi link NERDTreeDirSlash Directory
