@@ -1,6 +1,12 @@
-int main(int argc, char* argv[]) {
+/*
+ * main.cc
+ */
 
-	cout << "std::line" << endl;
+int main(int _, char* __[]) {
+
+	object prototype;
+
+	prototype.option("main", {"id"});
 
 	return 0;
 

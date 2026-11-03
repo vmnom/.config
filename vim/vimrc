@@ -2,7 +2,17 @@ function! _()
 
 	set hidden
 	set autoread
-	set updatetime=102
+	set showtabline=2
+	set tabline=%!MyTabLine()
+
+	function! MyTabLine()
+		let s = ''
+		for i in range(1, tabpagenr('$'))
+			let s .= "" vmnom.com/nosql"
+		endfor
+		let s .= '%#TabLineFill#'
+		return s
+	endfunction
 
 	" dotfiles
 
@@ -35,7 +45,9 @@ function! _()
 
 	colorscheme clang
 
-	set makeprg=make
+	set makeprg=make\ -s
+
+	autocmd TabNew * tabclose
 
 endfunction
 

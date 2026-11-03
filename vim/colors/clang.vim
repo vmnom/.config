@@ -1,10 +1,13 @@
 hi clear
 
-hi Normal ctermfg=30 ctermbg=0 cterm=none
-hi StatusLine ctermfg=8 ctermbg=0 cterm=none
-hi StatusLineNC ctermfg=0 ctermbg=8 cterm=none,reverse
+hi Normal ctermfg=0 ctermbg=gray cterm=none
+hi StatusLine ctermfg=gray ctermbg=gray cterm=none
+hi StatusLineNC ctermfg=gray ctermbg=gray cterm=none
 
 let g:colors_name = "clang"
+
+hi TabLineFill ctermfg=60
+hi TabLineSel ctermfg=white ctermbg=60
 
 hi clear NERDTreeFile
 hi NERDTreeFile ctermfg=60
@@ -15,9 +18,9 @@ hi link PreProc Type
 hi clear Constant
 hi link Constant Type
 hi clear LineNr
-hi LineNr ctermfg=189
+hi LineNr ctermfg=8
 hi clear Comment
-hi Comment ctermfg=143
+hi Comment ctermfg=0
 hi clear Special
 hi link Special StatusLine
 hi clear cppSTLtype
@@ -35,7 +38,6 @@ hi link CursorLineNr Identifier
 hi clear Statement
 hi link Statement Identifier
 hi clear EndOfBuffer
-hi link EndOfBuffer StatusLine
 hi clear Visual
 hi Visual ctermbg=236
 hi clear cUserFunction
