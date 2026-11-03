@@ -4,7 +4,10 @@ CMAKE   := -std=c++11
 CFLAG   := -w -H -pipe 
 CPCH    := -include./os/nosql/index.h
 SHELL   := $(shell echo $$SHELL)
-cdev    := $(CMAKE) $(CFLAG) -lsqlite3 $(CPCH) -Ios/nosql -Ios os/nosql/index.cc -o $(VMNOM) 
+SOURCE  := os/nosql/empty.cc
+# SOURCE  += os/rwx/empty.cc
+
+cdev    := $(CMAKE) $(CFLAG) -lsqlite3 $(CPCH) -Ios/nosql -Ios $(SOURCE) -o $(VMNOM) 
 cpch    := $(CMAKE) $(CFLAG) -O0 -x c++-header os/nosql/index.h
 
 dev:
