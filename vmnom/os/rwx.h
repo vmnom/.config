@@ -3,36 +3,75 @@
 
 #include <index.h>
 
-struct playground {
+struct protocol : map<string, Nosql*> {};
 
-	Any window;
+struct Nosql : protocol {
 
-	void listen(string addr, int port) {
+	protected:
 
-		window.option("name", {"username"});
+		string fd;
 
-		window.option("email", {"mail@gmail.com"});
+		Nosql(int ignored);
 
-/* 		window.option("b", addr); */
+	public:
 
-/* 		window.option("c", addr); */
+		Nosql(string value = "{}") {
+			fd = value;
+		}
 
-/* 		Any console(0); */
+	public:
 
-/* 		console.option("log", {"alert"}); */
+		Nosql* prototype;
 
-/* 		window.option("console", {console}); */
+		Nosql* init (Nosql* empty) {
 
-/* 		window.option("port", port); */
+			prototype = empty;
 
-		Any log = {0};
+		}
 
-		/* log.option("msg", {"text here"}); */
+		Nosql* option (string key, Nosql value) {
 
-		/* window.assign("console", &log); */
+			(*this)[key] = &value;
 
-		cout << window.valueOf();
+			return this;
+		}
 
+		Nosql* assign (string key, Nosql* value) {
+
+			(*this)[key] = value;
+
+			return this;
+		}
+
+		Nosql* options (string key) {
+
+			return (*this)[key];
+
+		}
+
+		void valueOf (Nosql* prototype) {
+
+			cout << "prototype" << endl;
+
+		}
+
+};
+
+struct playground : Nosql {
+
+	void user(string addr, int port) {
+
+		init(this);
+
+		prototype->option("mail", {"mail"});
+
+		prototype->option("user", {"user"});
+
+		prototype->option("mail2", {"mail2"});
+
+		prototype->assign("mail2", prototype);
+
+		valueOf(options("mail"));
 	}
 
 };
