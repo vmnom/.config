@@ -1,26 +1,26 @@
 function! _()
 
-	set hidden
-	set autoread
-	set showtabline=2
-	set tabline=%!MyTabLine()
-
-	function! MyTabLine()
-		let s = ''
-		for i in range(1, tabpagenr('$'))
-			let s .= "" vmnom.com/nosql"
-		endfor
-		let s .= '%#TabLineFill#'
-		return s
-	endfunction
-
-	" dotfiles
-
 	set tags=~/config/vmnom/tags;,tags
-
 	source ~/.config/vim/functions/Plug.vim
-
 	source ~/.config/vim/functions/InspectScheme.vim
+
+	colorscheme clang
+
+	call plug#begin('~/.config/vim/plugged') 
+
+	set hidden
+
+	set autoread
+
+	Plug 'preservim/nerdtree'
+
+	Plug 'vim/colorschemes'
+
+	Plug 'sheerun/vim-polyglot'
+
+	Plug 'tpope/vim-commentary'
+
+	call plug#end()
 
 	set nowrap
 	set cursorline
@@ -33,21 +33,47 @@ function! _()
 	set softtabstop&
 	set shiftwidth&
 	set expandtab&
+	set noautochdir
 	set background=dark
 
 	filetype plugin indent on
 
-	let g:NERDTreeWinSize = 30
-
-	" Toggle NERDTree with Ctrl+e
+	let g:NERDTreeWinSize = 36
 
 	nnoremap <C-e> :NERDTreeToggle<CR>
 
-	colorscheme clang
+	function! MyCustomAirlineStatus()
+		" Use a try block to catch any terminal output errors cleanly
+		try
+			" Run your custom system command, stripping out trailing line breaks
+			return substitute(system('ls'), '\n', ' ', 'g')
+		catch
+			return ''
+		endtry
+	endfunction
 
-	set makeprg=make\ -s
+	" Hook into airline's initialization pipeline
+	function! SetupAirlineCustomParts()
+		" Define a dynamic part that safely calls your evaluation function
+		call airline#parts#define_function('my_ls_cmd', 'MyCustomAirlineStatus')
 
-	autocmd TabNew * tabclose
+		" Replace Section Z (the far-right indicator block) with your custom part
+		let g:airline_section_z = airline#section#create_right(['my_ls_cmd'])
+	endfunction
+
+	" Run customization safely after airline completes loading
+	augroup AirlineCustom
+		autocmd!
+		autocmd User AirlineAfterInit call SetupAirlineCustomParts()
+	augroup END
+
+	" Disable the trailing whitespace warning extension completely
+	let g:airline#extensions#whitespace#enabled = 0
+
+	" Alternatively, if you want the extension on but want to hide just the trailing checks:
+	let g:airline#extensions#whitespace#checks = [ 'indent', 'mixed-indent-file' ]
+
+	set makeprg=clear\ &&\ make
 
 endfunction
 

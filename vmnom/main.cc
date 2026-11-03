@@ -4,9 +4,9 @@
 
 int main(int _, char* __[]) {
 
-	object prototype;
+	Nosql prototype{0};
 
-	prototype.option("main", {"id"});
+	prototype.test();
 
 	return 0;
 

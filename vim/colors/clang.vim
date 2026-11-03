@@ -1,16 +1,16 @@
 hi clear
 
-hi Normal ctermfg=0 ctermbg=gray cterm=none
-hi StatusLine ctermfg=gray ctermbg=gray cterm=none
+hi clear NERDTreeFile
+hi NERDTreeFile ctermfg=189
+
+hi Normal ctermfg=60 ctermbg=0 cterm=none
+hi StatusLine ctermfg=136 ctermbg=18 cterm=none
 hi StatusLineNC ctermfg=gray ctermbg=gray cterm=none
 
 let g:colors_name = "clang"
 
-hi TabLineFill ctermfg=60
-hi TabLineSel ctermfg=white ctermbg=60
+hi TabLineFill ctermfg=18 ctermbg=11
 
-hi clear NERDTreeFile
-hi NERDTreeFile ctermfg=60
 hi clear Type
 hi link Type NERDTreeFile
 hi clear PreProc
@@ -20,7 +20,7 @@ hi link Constant Type
 hi clear LineNr
 hi LineNr ctermfg=8
 hi clear Comment
-hi Comment ctermfg=0
+hi Comment ctermfg=White
 hi clear Special
 hi link Special StatusLine
 hi clear cppSTLtype

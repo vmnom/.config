@@ -1,4 +1,4 @@
-VMNOM   := local/bin/vmnom
+VMNOM   := local/bin/vmnomx
 CLANG   := c++
 CMAKE   := -std=c++11
 CFLAG   := -w -H -pipe
