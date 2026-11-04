@@ -1,10 +1,10 @@
-VMNOM   := local/bin/vmnomx
-CLANG   := time c++
-CMAKE   := -std=c++98
-CFLAG   := -w -H -pipe
-SHELL   := $(shell echo $$SHELL)
-CPCH    := -include./os/nosql/index.h
+CLANG    := time c++
+CMAKE    := -std=c++98
+CFLAG    := -w -H -pipe
+SHELL    := $(shell echo $$SHELL)
+CPCH     := -include./os/nosql/index.h
 SOURCE   := main.cc
+VMNOM    := local/bin/vmnomx
 HEADERS  := -lsqlite3
 HEADERS  += -Ios
 HEADERS  += -Ios/nosql

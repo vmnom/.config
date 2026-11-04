@@ -3,25 +3,25 @@
 
 #include <index.h>
 
-struct Nosql;
-
-using namespace std;
-
 /*
- * Nosql prototype
+ * Nosql vb
  */
 
 class Nosql : public map<string, Nosql*> {
 
-	private:
+	string recieve;
+
+	public:
 
 		int indent = 1;
 
-		string recieve;
-
 		Nosql* prototype;
 
-	public:
+		Nosql(clock_t value) {
+
+			recieve = to_string(value);
+
+		}
 
 		Nosql(int dep) {
 
@@ -41,7 +41,9 @@ class Nosql : public map<string, Nosql*> {
 
 		string value() {
 
-			return recieve;
+			string v = recieve;
+
+			return v;
 
 		}
 
@@ -51,32 +53,19 @@ class Nosql : public map<string, Nosql*> {
 
 			(*this)[key] = item;
 
-			(*this)[key]->indent = indent + 1;
-
 		}
 
 		string valueOf() {
 
-/* 			if(size()) { */
+			if(size()) {
 
-/* 				string ss = "{"; */
+				return "x\t ::(" + size() + 0;
 
-/* 				iterator vertical; */
+			}
 
-/* 				/1* for(vertical = begin(); vertical != end(); ++vertical) { *1/ */
+			if(!prototype)
 
-/* 					/1* ss += '\n'; *1/ */
-/* 					/1* ss += string(indent, '\t'); *1/ */
-
-/* 				/1* } *1/ */
-
-/* 				return ss + "\n" + string(indent -1 , '\t') + "}"; */
-
-/* 			} */
-
-/* 			if(!prototype) */
-
-/* 				return value(); */
+				return value();
 
 
 			return "undefined";
@@ -87,13 +76,14 @@ class Nosql : public map<string, Nosql*> {
 
 		string mail() {
 
-			/* prototype = this; */
+			prototype = this;
 
-			option("inbox", 0);
+			option("Return-Type", 0);
 
-			return valueOf();
+			return  valueOf();
 
 		}
+
 };
 
 #endif

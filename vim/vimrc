@@ -1,7 +1,9 @@
 function! _()
 
 	set tags=~/config/vmnom/tags;,tags
+
 	source ~/.config/vim/functions/Plug.vim
+
 	source ~/.config/vim/functions/InspectScheme.vim
 
 	call plug#begin('~/.config/vim/plugged') 
@@ -39,37 +41,6 @@ function! _()
 	let g:NERDTreeWinSize = 36
 
 	nnoremap <C-e> :NERDTreeToggle<CR>
-
-	function! MyCustomAirlineStatus()
-		" Use a try block to catch any terminal output errors cleanly
-		try
-			" Run your custom system command, stripping out trailing line breaks
-			return substitute(system('ls'), '\n', ' ', 'g')
-		catch
-			return ''
-		endtry
-	endfunction
-
-	" Hook into airline's initialization pipeline
-	function! SetupAirlineCustomParts()
-		" Define a dynamic part that safely calls your evaluation function
-		call airline#parts#define_function('my_ls_cmd', 'MyCustomAirlineStatus')
-
-		" Replace Section Z (the far-right indicator block) with your custom part
-		let g:airline_section_z = airline#section#create_right(['my_ls_cmd'])
-	endfunction
-
-	" Run customization safely after airline completes loading
-	augroup AirlineCustom
-		autocmd!
-		autocmd User AirlineAfterInit call SetupAirlineCustomParts()
-	augroup END
-
-	" Disable the trailing whitespace warning extension completely
-	let g:airline#extensions#whitespace#enabled = 0
-
-	" Alternatively, if you want the extension on but want to hide just the trailing checks:
-	let g:airline#extensions#whitespace#checks = [ 'indent', 'mixed-indent-file' ]
 
 	set makeprg=clear\ &&\ make
 

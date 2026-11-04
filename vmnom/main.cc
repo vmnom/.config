@@ -1,20 +1,17 @@
 /*
  * main.cc
+ *
  */
 
 #include <nosql.h>
 
 int main(int _, char* __[]) {
 
-	Nosql prototype(0);
+	Nosql eml(0);
 
-	cout << endl;
-       
-	cout << "vmnom/nosql, tests" << endl;
+	string source = eml.mail();
 
-	cout << prototype.mail();
-
-	cout << endl;
+	cout << source;
 
 	return 0;
 

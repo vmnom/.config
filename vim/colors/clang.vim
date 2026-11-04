@@ -1,45 +1,48 @@
-hi clear
-
 hi clear NERDTreeFile
-
-hi NERDTreeFile ctermfg=60
-
-hi Normal ctermfg=25 ctermbg=232 cterm=none
-hi StatusLine ctermfg=136 ctermbg=18 cterm=none
-hi StatusLineNC ctermfg=gray ctermbg=gray cterm=none
-
-hi TabLineFill ctermfg=18 ctermbg=11
-
-hi clear Type
-hi link Type NERDTreeFile
-hi clear PreProc
-hi link PreProc Type
-hi clear Constant
-hi link Constant Type
-hi clear LineNr
-hi LineNr ctermfg=8
-hi clear Comment
-hi Comment ctermfg=White
-hi clear Special
-hi link Special String
-hi clear cppSTLtype
 hi clear Identifier
-hi Identifier ctermfg=202
+hi clear StatusLine
+hi clear StatusLineNC
+hi clear cppSTLtype
 hi clear Directory 
-hi link Directory Normal
-hi link NERDTreeDirSlash Directory
-hi clear VertSplit 
-hi link VertSplit Type
+hi clear Type
+hi clear PreProc
+hi clear Constant
+hi clear LineNr
+hi clear Comment
+hi clear Special
 hi clear CursorLine
-hi CursorLine ctermbg=none cterm=bold
+hi clear VertSplit 
 hi clear CursorLineNr
-hi link CursorLineNr Identifier
 hi clear Statement
-hi link Statement Identifier
 hi clear EndOfBuffer
-hi clear Visual
-hi Visual ctermbg=236
 hi clear cUserFunction
-hi link cUserFunction Identifier
-hi MatchParen ctermbg=none
+hi clear Visual
+
+hi Comment ctermfg=8
+hi NERDTreeFile ctermfg=189
+hi Normal ctermfg=9 ctermbg=0
+hi Visual ctermbg=236
+hi Identifier guifg=white
 hi cStorageClass ctermfg=9
+hi CursorLine ctermbg=none cterm=bold
+
+hi MatchParen ctermbg=none
+hi StatusLine cterm=none,reverse
+hi StatusLineNC cterm=bold,reverse
+
+hi link LineNr Comment 
+hi link Special String
+hi link PreProc Type
+hi link Constant Type
+hi link Directory Normal
+hi link StatusLine Normal
+hi link StatusLineNC Normal
+hi link CursorLineNr LineNr
+hi link Type NERDTreeFile
+hi link EndOfBuffer Normal
+hi link Statement Identifier
+hi link cUserFunction Identifier
+hi link NERDTreeDirSlash Directory
+hi link VertSplit Special
+
+set termguicolors
