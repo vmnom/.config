@@ -1,14 +1,15 @@
 VMNOM   := local/bin/vmnomx
-CLANG   := c++
-CMAKE   := -std=c++11
+CLANG   := time c++
+CMAKE   := -std=c++98
 CFLAG   := -w -H -pipe
 SHELL   := $(shell echo $$SHELL)
-CPCH    := -include./os/nosql/nosql.h
+CPCH    := -include./os/nosql/index.h
 SOURCE   := main.cc
 HEADERS  := -lsqlite3
+HEADERS  += -Ios
 HEADERS  += -Ios/nosql
 
-cpch    := $(CMAKE) $(CFLAG) -O0 -x c++-header os/nosql/nosql.h
+cpch    := $(CMAKE) $(CFLAG) -O0 -x c++-header os/nosql/index.h
 cdev    := $(CMAKE) $(CFLAG) $(HEADERS) $(CPCH) $(SOURCE) -o $(VMNOM)
 
 cc:

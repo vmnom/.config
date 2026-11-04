@@ -4,8 +4,6 @@ function! _()
 	source ~/.config/vim/functions/Plug.vim
 	source ~/.config/vim/functions/InspectScheme.vim
 
-	colorscheme clang
-
 	call plug#begin('~/.config/vim/plugged') 
 
 	set hidden
@@ -74,6 +72,8 @@ function! _()
 	let g:airline#extensions#whitespace#checks = [ 'indent', 'mixed-indent-file' ]
 
 	set makeprg=clear\ &&\ make
+
+	colorscheme clang
 
 endfunction
 

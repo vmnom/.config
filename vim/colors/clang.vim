@@ -2,13 +2,11 @@ hi clear
 
 hi clear NERDTreeFile
 
-hi NERDTreeFile ctermfg=189
+hi NERDTreeFile ctermfg=60
 
-hi Normal ctermfg=112 ctermbg=233 cterm=none
+hi Normal ctermfg=25 ctermbg=232 cterm=none
 hi StatusLine ctermfg=136 ctermbg=18 cterm=none
 hi StatusLineNC ctermfg=gray ctermbg=gray cterm=none
-
-let g:colors_name = "clang"
 
 hi TabLineFill ctermfg=18 ctermbg=11
 
