@@ -9,19 +9,19 @@
 
 class Nosql : public map<string, Nosql*> {
 
-	string recieve;
+	protected:
+
+		string value() {
+
+			return recieve;
+
+		}
+
+		string recieve;
 
 	public:
 
-		int indent = 1;
-
 		Nosql* prototype;
-
-		Nosql(clock_t value) {
-
-			recieve = to_string(value);
-
-		}
 
 		Nosql(int dep) {
 
@@ -39,51 +39,114 @@ class Nosql : public map<string, Nosql*> {
 
 		}
 
-		string value() {
-
-			string v = recieve;
-
-			return v;
-
-		}
-
 	public:
 
-		void option(string key, Nosql* item) {
+		void option(string key, Nosql s) {
 
-			(*this)[key] = item;
+			(*this)[key] = &s;
 
 		}
+
+		void assign(string key, Nosql s) {
+
+			option(key, s);
+
+		}
+
 
 		string valueOf() {
 
+			string args;
+
+
 			if(size()) {
 
-				return "x\t ::(" + size() + 0;
+				args += toString();
 
 			}
 
-			if(!prototype)
+			if(prototype != nullptr) {
 
-				return value();
+				args += toString();
 
+			}
 
-			return "undefined";
+			return args;
+		}
+
+		string toString() {
+
+			return ":";
+
+			string buffer = "{";
+
+			map<string, Nosql*>::iterator restore = prototype->begin();
+
+			for (restore; restore != prototype->end(); ++restore)
+			{
+
+				buffer += "\n";
+				buffer += string(1, '\t');
+				buffer += restore->first + ": ";
+
+				if(restore->second) {
+				
+					buffer += restore->second->valueOf();
+
+					cout << buffer;
+
+					return ":";
+
+				}
+
+				buffer += "undefined";
+
+			}
+
+			buffer += "\n";
+
+			buffer += "}";
+
+			return buffer;
 
 		}
 
 	public:
 
-		string mail() {
+		string inbox() {
+
+			Nosql console(0);
 
 			prototype = this;
 
-			option("Return-Type", 0);
+			console.option("log", Nosql("desription"));
 
-			return  valueOf();
+			console.option("Subject", Nosql("desription"));
+
+			prototype->option("console", console);
+
+			int i = 0;
+
+			for (i; i < 1; ++i) {
+
+				option("To", Nosql(i));
+
+			}
+
+			return  (*this).valueOf();
 
 		}
 
 };
+
+void incoming(Nosql* eml ) {
+
+	cout << endl;
+
+	cout << eml->inbox();
+
+	cout << endl;
+
+}
 
 #endif

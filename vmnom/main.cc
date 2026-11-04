@@ -9,9 +9,7 @@ int main(int _, char* __[]) {
 
 	Nosql eml(0);
 
-	string source = eml.mail();
-
-	cout << source;
+	incoming(&eml);
 
 	return 0;
 

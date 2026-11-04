@@ -1,10 +1,10 @@
 hi clear NERDTreeFile
-hi clear Identifier
 hi clear StatusLine
+hi clear Identifier
 hi clear StatusLineNC
-hi clear cppSTLtype
 hi clear Directory 
 hi clear Type
+hi clear cppSTLtype
 hi clear PreProc
 hi clear Constant
 hi clear LineNr
@@ -18,11 +18,11 @@ hi clear EndOfBuffer
 hi clear cUserFunction
 hi clear Visual
 
-hi Comment ctermfg=8
+hi Comment ctermfg=white
 hi NERDTreeFile ctermfg=189
 hi Normal ctermfg=9 ctermbg=0
 hi Visual ctermbg=236
-hi Identifier guifg=white
+hi Identifier ctermfg=33
 hi cStorageClass ctermfg=9
 hi CursorLine ctermbg=none cterm=bold
 
@@ -30,7 +30,7 @@ hi MatchParen ctermbg=none
 hi StatusLine cterm=none,reverse
 hi StatusLineNC cterm=bold,reverse
 
-hi link LineNr Comment 
+hi link LineNr Identifier
 hi link Special String
 hi link PreProc Type
 hi link Constant Type
