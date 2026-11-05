@@ -1,0 +1,6 @@
+{
+	index: "log",
+	inbox: {
+		log: 2
+	}
+}

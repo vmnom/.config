@@ -47,39 +47,47 @@ class Nosql : public map<string, Nosql*> {
 
 	public:
 
-		void option(string key, Nosql* item) {
+		void option(string key, Nosql* prototype) {
 
-			(*this)[key] = item;
-
-			(*this)[key]->indent = indent + 1;
+			(*this)[key] = prototype;
 
 		}
 
-		string valueOf() {
+		string valueOf(int indent = 0) {
 
-/* 			if(size()) { */
+			if(size()) {
 
-/* 				string ss = "{"; */
+				iterator n;
 
-/* 				iterator vertical; */
+				string args;
 
-/* 				/1* for(vertical = begin(); vertical != end(); ++vertical) { *1/ */
+				for(n = begin(); n != end(); ++n) {
 
-/* 					/1* ss += '\n'; *1/ */
-/* 					/1* ss += string(indent, '\t'); *1/ */
+					args += "\n";
 
-/* 				/1* } *1/ */
+					args += string(indent, '\t');
 
-/* 				return ss + "\n" + string(indent -1 , '\t') + "}"; */
+					args += n->first;
 
-/* 			} */
+					if(n->second)
 
-/* 			if(!prototype) */
+					args += ":" + n->second->valueOf(indent + 1);
 
-/* 				return value(); */
+					else
 
+						args += ": undefined";
 
-			return "undefined";
+				}
+
+				return args;
+
+			}
+
+			if(prototype)
+
+				return prototype->valueOf(zdepth);
+
+			return value();
 
 		}
 
@@ -87,9 +95,23 @@ class Nosql : public map<string, Nosql*> {
 
 		string mail() {
 
-			/* prototype = this; */
+			Nosql inbox(0);
 
-			option("inbox", 0);
+			inbox.option("log", 0);
+
+			inbox.option("log2", 0);
+
+			option("inbox", &inbox);
+
+			Nosql cv(0);
+
+			cv.option("key", 0);
+
+			inbox.option("log3", &cv);
+
+			option("mail", &inbox);
+
+			prototype = this;
 
 			return valueOf();
 
